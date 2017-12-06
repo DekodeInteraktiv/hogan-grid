@@ -1,0 +1,22 @@
+{
+  "name": "dekodeinteraktiv/hogan-grid",
+  "description": "Card grid module for Hogan",
+  "homepage": "https://github.com/DekodeInteraktiv/hogan-grid",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "require": {
+    "php": ">=7.0",
+    "composer/installers": "~1.2",
+    "dekodeinteraktiv/hogan-core": "^1.0"
+  },
+  "archive": {
+    "exclude": [
+      ".editorconfig",
+      ".gitignore",
+      "composer.json",
+      "composer.lock",
+      "LICENSE",
+      "phpcs.xml"
+    ]
+  }
+}
