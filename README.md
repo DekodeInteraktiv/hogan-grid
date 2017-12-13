@@ -34,6 +34,25 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 
 - `hogan/module/grid/static_content_taxonomy`  - which taxonomies to allow content for in the relationship field (default empty array).
 
+- `hogan/module/grid/dynamic_content_post_types` - array with post types to allow in dynamic selection
+```
+//default values
+[
+	'post' => __( 'Posts', 'hogan-grid' ),
+	'page' => __( 'Pages', 'hogan-grid' )
+]
+```
+
+- `hogan/module/grid/card_sizes` - card sizes to use in module
+```
+//default values
+[
+	'small'  => __( 'Single', 'hogan-grid' ),
+	'medium' => __( 'Double', 'hogan-grid' ),
+	'large'  => __( 'Full', 'hogan-grid' ),
+]
+```
+
 ## TODO
 - set background color or image for module
 - template output
