@@ -39,6 +39,6 @@ function hogan_grid_load_textdomain() {
  */
 function hogan_grid_register_module() {
 	require_once 'class-grid.php';
-	//require_once 'includes/template-tags.php';
+	require_once 'includes/template-tags.php';
 	\hogan_register_module( new \Dekode\Hogan\Grid() );
 }

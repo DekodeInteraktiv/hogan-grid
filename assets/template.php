@@ -6,7 +6,7 @@
  *
  * Available properties:
  * $this->heading (string) Module heading.
- * $this->collection (array) Module heading.
+ * $this->collection (array) Collection of cards to display.
  *
  * @package Hogan
  */
@@ -23,16 +23,7 @@ if ( ! empty( $this->heading ) ) : ?>
 <?php
 endif;
 
-foreach ( $this->collection as $group ) {
-
-	switch ( $group['acf_fc_layout'] ) {
-		case 'static_content':
-			foreach ( $group['posts_list'] as $card ) {
-				printf( '<a href="%s">%s</a>', esc_url( get_the_permalink( $card ) ), esc_html( get_the_title( $card ) ) );
-			}
-			break;
-
-		default:
-			break;
-	}
+// todo: wrapper.
+foreach ( $this->collection as $card ) {
+	setup_card( $card );
 }

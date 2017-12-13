@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Grid\n"
-"POT-Creation-Date: 2017-12-06 15:51+0100\n"
-"PO-Revision-Date: 2017-12-07 15:36+0100\n"
+"POT-Creation-Date: 2017-12-13 09:12+0100\n"
+"PO-Revision-Date: 2017-12-13 09:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -27,89 +27,69 @@ msgstr "Kort"
 
 #: class-grid.php:70
 msgid "Add cards"
-msgstr ""
+msgstr "Legg til kort"
 
 #: class-grid.php:78
 msgid "Static content"
-msgstr ""
+msgstr "Faste kort"
 
-#: class-grid.php:84 class-grid.php:138
-msgid "Card Type"
-msgstr ""
+#: class-grid.php:84 class-grid.php:126
+msgid "Card Style"
+msgstr "Kortstørrelse"
 
-#: class-grid.php:86 class-grid.php:140
+#: class-grid.php:86 class-grid.php:128
 msgid "Choose card type for this group"
-msgstr ""
+msgstr "Bestem størrelsen på kort i denne gruppen"
 
-#: class-grid.php:88 class-grid.php:142
+#: class-grid.php:88 class-grid.php:130
 msgid "Single"
-msgstr ""
+msgstr "Standard"
 
-#: class-grid.php:89 class-grid.php:143
+#: class-grid.php:89 class-grid.php:131
 msgid "Double"
-msgstr ""
+msgstr "Medium"
 
-#: class-grid.php:90 class-grid.php:144
+#: class-grid.php:90 class-grid.php:132
 msgid "Full"
-msgstr ""
+msgstr "Stor"
+
+#: class-grid.php:100
+msgid "Pick items from list"
+msgstr "Velg kort fra listen"
 
 #: class-grid.php:103
-msgid "Pick items from list"
-msgstr ""
-
-#: class-grid.php:106
 msgid "Select items to by clicking the items on the left side"
 msgstr ""
+"Legg til kort ved å klikke i listen til venstre. Fjern kort ved å klikke i "
+"listen til høyre"
 
-#: class-grid.php:132
+#: class-grid.php:120
 msgid "Dynamic content"
-msgstr ""
+msgstr "Dynamiske kort"
 
-#: class-grid.php:157
-msgid "Number of items"
-msgstr ""
+#: class-grid.php:142
+msgid "Content Type"
+msgstr "Innholdstype"
+
+#: class-grid.php:144
+msgid "Select the content type to build cards from"
+msgstr "Velg en innholdstype for dynamiske kort"
+
+#: class-grid.php:149
+msgid "Posts"
+msgstr "Innlegg"
+
+#: class-grid.php:149
+msgid "Pages"
+msgstr "Sider"
 
 #: class-grid.php:159
+msgid "Number of items"
+msgstr "Antall kort"
+
+#: class-grid.php:161
 msgid "Set the number of items to display"
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/class-core.php:231
-msgid "Add module"
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/class-core.php:284
-msgid "Content Modules"
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:24
-msgid ""
-"Hogan modules have already been registered. Please run "
-"hogan_register_module() on action hogan/include_modules."
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:41
-msgid ""
-"Hogan field groups have already been registered. Please run "
-"hogan_deregister_default_field_group() on action hogan/include_field_groups."
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:62
-msgid ""
-"Hogan field groups have already been registered. Please run "
-"hogan_register_field_group() on action hogan/include_field_groups."
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:96
-msgid "Heading"
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:97
-msgid "Optional heading will show only if filled in."
-msgstr ""
-
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:117
-msgid "Caption"
-msgstr ""
+msgstr "Bestem antall kort som skal vises"
 
 #. Plugin Name of the plugin/theme
 msgid "Hogan Module: Grid"
@@ -121,7 +101,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid "Card Grid Module for Hogan"
-msgstr ""
+msgstr "Kortmodul for Hogan"
 
 #. Author of the plugin/theme
 msgid "Dekode"

@@ -81,21 +81,18 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							[
 								'type'          => 'button_group',
 								'key'           => $this->field_key . '_card_style',
-								'label'         => __( 'Card Type', 'hogan-grid' ),
+								'label'         => __( 'Card Style', 'hogan-grid' ),
 								'name'          => 'card_style',
 								'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
-								'choices'       => [
+								'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
 									'small'  => __( 'Single', 'hogan-grid' ),
 									'medium' => __( 'Double', 'hogan-grid' ),
 									'large'  => __( 'Full', 'hogan-grid' ),
-								],
+								], $this ),
 								'allow_null'    => 0,
 								'default_value' => 'automatic',
 								'layout'        => 'horizontal',
 								'return_format' => 'value',
-								'wrapper'       => [
-									'width' => '50',
-								],
 							],
 							[
 								'type'              => 'relationship',
@@ -126,21 +123,35 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							[
 								'type'          => 'button_group',
 								'key'           => $this->field_key . 'dynamic_card_style',
-								'label'         => __( 'Card Type', 'hogan-grid' ),
+								'label'         => __( 'Card Style', 'hogan-grid' ),
 								'name'          => 'card_style',
 								'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
-								'choices'       => [
+								'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
 									'small'  => __( 'Single', 'hogan-grid' ),
 									'medium' => __( 'Double', 'hogan-grid' ),
 									'large'  => __( 'Full', 'hogan-grid' ),
-								],
+								], $this ),
 								'allow_null'    => 0,
 								'default_value' => 'automatic',
 								'layout'        => 'horizontal',
 								'return_format' => 'value',
-								'wrapper'       => [
+							],
+							[
+								'type' => 'select',
+								'key' => $this->field_key . 'dynamic_card_content_type',
+								'label' => __( 'Content Type', 'hogan-grid' ),
+								'name' => 'card_content_type',
+								'instructions' => __( 'Select the content type to build cards from', 'hogan-grid' ),
+								'required' => 1,
+								'wrapper' => array(
 									'width' => '50',
-								],
+								),
+								'choices' => apply_filters( 'hogan/module/grid/dynamic_content_post_types', [ 'post' => __( 'Posts', 'hogan-grid' ), 'page' => __( 'Pages', 'hogan-grid' ) ], $this ),
+								'allow_null' => 0,
+								'multiple' => 0,
+								'ui' => 0,
+								'ajax' => 0,
+								'return_format' => 'value',
 							],
 							[
 								'type'              => 'number',
@@ -175,9 +186,40 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 */
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->collection =  $raw_content['flex_grid'] ?? '';
+			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
+		}
+
+		public function structure_card_data( $data ) {
+
+			if ( empty( $data ) ){
+				return '';
+			}
+			$cards = [];
+			foreach ( $data as $group ) {
+
+				switch ( $group['acf_fc_layout'] ) {
+
+					case 'static_content':
+						foreach ( $group['posts_list'] as $card ) {
+
+							$cards[] = [
+								'id' => $card,
+								'content_type' => get_post_type( $card ),
+								'style' => $group['card_style'],
+							];
+						}
+						break;
+
+					case 'dynamic_content':
+						break;
+
+					default:
+						break;
+				}
+			}
+			return $cards;
 		}
 
 		/**
