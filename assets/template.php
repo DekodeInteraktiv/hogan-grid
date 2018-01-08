@@ -28,7 +28,7 @@ if ( ! empty( $this->heading ) ) {
 <div class="hogan-grid">
 	<?php
 	foreach ( $this->collection as $card ) {
-		setup_card( $card );
+		hogan_grid_the_card( $card );
 	}
 	?>
 </div>

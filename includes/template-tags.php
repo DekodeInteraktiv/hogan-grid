@@ -13,7 +13,7 @@ namespace Dekode\Hogan;
  * @param array $card_raw Post ID and type.
  * @return void
  */
-function setup_card( $card_raw ) {
+function hogan_grid_the_card( $card_raw ) {
 
 	switch ( $card_raw['content_type'] ) {
 		default:
