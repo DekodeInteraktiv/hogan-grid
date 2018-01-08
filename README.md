@@ -1,4 +1,4 @@
-# Card Grid Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-core)
+# Card Grid Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-core) [![Build Status](https://travis-ci.org/DekodeInteraktiv/hogan-grid.svg?branch=master)](https://travis-ci.org/DekodeInteraktiv/hogan-grid)
 
 ## Installation
 Install the module using Composer `composer require dekodeinteraktiv/hogan-grid` or simply by downloading this repository and placing it in `wp-content/plugins`
