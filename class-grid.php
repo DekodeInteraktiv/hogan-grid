@@ -101,9 +101,16 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								'value'         => null,
 								'instructions'  => __( 'Select items to by clicking the items on the left side', 'hogan-grid' ),
 								'required'      => 1,
-								'post_type'     => apply_filters( 'hogan/module/grid/static_content_post_types', [ 0 => 'post', 1 => 'page' ], $this ),
+								'post_type'     => apply_filters( 'hogan/module/grid/static_content_post_types', [
+									0 => 'post',
+									1 => 'page',
+								], $this ),
 								'taxonomy'      => apply_filters( 'hogan/module/grid/static_content_taxonomy', [], $this ),
-								'filters'       => apply_filters( 'hogan/module/grid/static_content_relation_filters', [ 0 => 'search',	1 => 'post_type', 2 => 'taxonomy',], $this ),
+								'filters'       => apply_filters( 'hogan/module/grid/static_content_relation_filters', [
+									0 => 'search',
+									1 => 'post_type',
+									2 => 'taxonomy',
+								], $this ),
 								'elements'      => [
 									0 => 'featured_image',
 								],
@@ -145,7 +152,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								'wrapper'       => [
 									'width' => '50',
 								],
-								'choices'       => apply_filters( 'hogan/module/grid/dynamic_content_post_types', [ 'post' => __( 'Posts', 'hogan-grid' ), 'page' => __( 'Pages', 'hogan-grid' ) ], $this ),
+								'choices'       => apply_filters( 'hogan/module/grid/dynamic_content_post_types', [
+									'post' => __( 'Posts', 'hogan-grid' ),
+									'page' => __( 'Pages', 'hogan-grid' ),
+								], $this ),
 								'allow_null'    => 0,
 								'multiple'      => 0,
 								'ui'            => 0,
@@ -189,7 +199,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 		}
 
-		public function structure_card_data( $data ) {
+		/**
+		 * Get card layouts
+		 *
+		 * @param array $data ACF layouts.
+		 * @return array Cards collection
+		 */
+		public function structure_card_data( array $data ) : array {
 
 			if ( empty( $data ) ) {
 				return '';
