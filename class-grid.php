@@ -33,18 +33,18 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 */
 		public function __construct() {
 
-			$this->label = __( 'Card grid', 'hogan-grid' );
+			$this->label    = __( 'Card grid', 'hogan-grid' );
 			$this->template = __DIR__ . '/assets/template.php';
 
-			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 
 			parent::__construct();
 		}
 
 		/**
-		 * Enqueue module assets
+		 * Enqueue module admin assets
 		 */
-		public function enqueue_assets() {
+		public function enqueue_admin_assets() {
 			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
 			wp_enqueue_style( 'grid-admin-style', plugins_url( '/assets/admin-style.css', __FILE__ ), [], $_version );
 		}
