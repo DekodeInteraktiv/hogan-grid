@@ -1,13 +1,17 @@
+/**
+ * Hogan Grid WP Admin
+ */
+
 .acf-field-flexible-content.grid-layouts {
-	background-color:  #fff;
+	background-color: #fff;
 }
 
 .acf-field-flexible-content.grid-layouts .layout {
-	border: solid 1px rgb(220,220,220);
+	border: solid 1px rgb( 220, 220, 220 );
 }
 
 .acf-field-flexible-content.grid-layouts .layout .acf-fc-layout-handle {
-	background-color: rgba( 220, 220, 220, .5 );
+	background-color: rgba( 220, 220, 220, 0.5 );
 }
 
 .acf-field-flexible-content.linklist-layouts .acf-fc-layout-order {

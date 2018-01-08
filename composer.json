@@ -16,7 +16,9 @@
       "composer.json",
       "composer.lock",
       "LICENSE",
-      "phpcs.xml"
+      "phpcs.xml",
+      "package.json",
+      "yarn.lock"
     ]
   }
 }

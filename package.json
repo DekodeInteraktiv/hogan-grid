@@ -1,0 +1,19 @@
+{
+  "name": "hogan-grid",
+  "version": "1.0.0",
+  "private": true,
+  "hogan": {
+    "css": {
+      "hogan-grid": "./src/style.css",
+      "hogan-grid-admin": "./src/admin.css"
+    }
+  },
+  "scripts": {
+    "build": "hogan-scripts build",
+    "lint": "hogan-scripts lint"
+  },
+  "devDependencies": {
+    "hogan-scripts": "^0.0.3"
+  },
+  "dependencies": {}
+}

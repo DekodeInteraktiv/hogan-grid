@@ -24,7 +24,11 @@ if ( ! empty( $this->heading ) ) {
 	] );
 }
 
-// todo: wrapper.
-foreach ( $this->collection as $card ) {
-	setup_card( $card );
-}
+?>
+<div class="hogan-grid">
+	<?php
+	foreach ( $this->collection as $card ) {
+		setup_card( $card );
+	}
+	?>
+</div>
