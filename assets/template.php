@@ -5,8 +5,8 @@
  * $this is an instace of the CardGrid object.
  *
  * Available properties:
- * $this->heading (string) Module heading.
- * $this->collection (array) Collection of cards to display.
+ * $this->heading    (string) Module heading.
+ * $this->collection (array)  Collection of cards to display.
  *
  * @package Hogan
  */
@@ -18,10 +18,11 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) ) {
 	return; // Exit if accessed directly.
 }
 
-if ( ! empty( $this->heading ) ) : ?>
-	<h2 class="heading"><?php echo esc_html( $this->heading ); ?></h2>
-<?php
-endif;
+if ( ! empty( $this->heading ) ) {
+	hogan_component( 'heading', [
+		'title' => $this->heading,
+	] );
+}
 
 // todo: wrapper.
 foreach ( $this->collection as $card ) {
