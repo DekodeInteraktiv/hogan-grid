@@ -45,8 +45,16 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 * Enqueue module admin assets
 		 */
 		public function enqueue_admin_assets() {
-			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
-			wp_enqueue_style( 'grid-admin-style', plugins_url( '/assets/admin-style.css', __FILE__ ), [], $_version );
+			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : HOGAN_GRID_VERSION;
+			wp_enqueue_style( 'hogan-grid-admin', plugins_url( '/assets/hogan-grid-admin.css', __FILE__ ), [], $_version );
+		}
+
+		/**
+		 * Enqueue module assets
+		 */
+		public function enqueue_assets() {
+			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : HOGAN_GRID_VERSION;
+			wp_enqueue_style( 'hogan-grid', plugins_url( '/assets/hogan-grid.css', __FILE__ ), [], $_version );
 		}
 
 		/**

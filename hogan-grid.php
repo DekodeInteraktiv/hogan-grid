@@ -24,6 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+define( 'HOGAN_GRID_VERSION', '1.0.0-dev' );
+
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_grid_load_textdomain' );
 add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module' );
 

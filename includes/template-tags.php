@@ -13,22 +13,26 @@ namespace Dekode\Hogan;
  * @param array $card_raw Post ID and type.
  * @return void
  */
-function setup_card( $card_raw ) {
+function hogan_grid_the_card( $card_raw ) {
 
 	switch ( $card_raw['content_type'] ) {
-
-		// case 'savage-custom-card':
-		// 	break;
-		// post, page.
 		default:
 			$image = get_the_post_thumbnail( $card_raw['id'], 'post-thumbnail' );
 			if ( empty( $image ) ) {
-				$card = sprintf( '<a href="%s"><div>%s</div></a>', get_the_permalink( $card_raw['id'] ), get_the_title( $card_raw['id'] ) );
+				$card = sprintf( '<div>%s</div>',
+					get_the_title( $card_raw['id'] )
+				);
 			} else {
-				$card = sprintf( '<a href="%s">%s<div>%s</div></a>', get_the_permalink( $card_raw['id'] ), get_the_post_thumbnail( $card_raw['id'], 'post-thumbnail' ) , get_the_title( $card_raw['id'] ) );
+				$card = sprintf( '%s<div>%s</div>',
+					get_the_post_thumbnail( $card_raw['id'], 'post-thumbnail' ),
+					get_the_title( $card_raw['id'] )
+				);
 			}
 			break;
 	}
 
-	echo $card;
+	printf( '<a href="%s" class="hogan-grid-item">%s</a>', // WPCS: XSS OK.
+		esc_url( get_the_permalink( $card_raw['id'] ) ),
+		$card
+	);
 }
