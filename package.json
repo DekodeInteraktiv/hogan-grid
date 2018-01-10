@@ -9,7 +9,7 @@
     }
   },
   "scripts": {
-    "build": "hogan-scripts build",
+    "build": "NODE_ENV=production BABEL_ENV=production hogan-scripts build",
     "lint": "hogan-scripts lint"
   },
   "devDependencies": {
