@@ -3,12 +3,62 @@
  */
 
 .hogan-grid {
+	overflow: hidden;
+}
+
+.hogan-grid-inner {
 	display: flex;
 	flex-flow: row wrap;
-	margin: 0 -5px;
 }
 
 .hogan-grid-item {
+	align-items: center;
+	background-color: #fff;
+	display: flex;
 	margin: 5px;
-	width: calc( 33.33333% - 10px );
+	position: relative;
+	width: calc( 50% - 10px );
+}
+
+.hogan-grid-item.hogan-grid-item-size-large {
+	width: calc( 100% - 10px );
+}
+
+.hogan-grid-item-inner {
+	width: 100%;
+}
+
+@media screen and ( min-width: 700px ) {
+	.hogan-grid-inner {
+		padding: 0 20px;
+	}
+
+	.hogan-grid-item {
+		margin: 20px;
+		width: calc( 50% - 40px );
+	}
+
+	.hogan-grid-item.hogan-grid-item-size-medium,
+	.hogan-grid-item.hogan-grid-item-size-large {
+		width: calc( 100% - 40px );
+	}
+}
+
+@media screen and ( min-width: 1000px ) {
+	.hogan-grid-inner {
+		padding: 0 40px;
+	}
+
+	.hogan-grid-item {
+		margin: 40px;
+		width: calc( 33.33333% - 80px );
+	}
+
+	.hogan-grid-item.hogan-grid-item-size-medium {
+		width: calc( 66.66667% - 80px );
+	}
+
+	.hogan-grid-item.hogan-grid-item-size-large {
+		width: calc( 100% - 80px );
+	}
 }

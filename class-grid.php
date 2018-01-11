@@ -229,9 +229,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						foreach ( $group['posts_list'] as $card ) {
 
 							$cards[] = [
-								'id'           => $card,
-								'content_type' => get_post_type( $card ),
-								'style'        => $group['card_style'],
+								'id'   => $card,
+								'type' => get_post_type( $card ),
+								'size' => $group['card_style'],
 							];
 						}
 						break;
