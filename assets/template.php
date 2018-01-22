@@ -14,7 +14,7 @@
 declare( strict_types = 1 );
 namespace Dekode\Hogan;
 
-if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) || ! function_exists( 'savage_card' ) ) {
+if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) || ! function_exists( 'savage_get_card' ) ) {
 	return;
 }
 
@@ -25,15 +25,18 @@ if ( ! empty( $this->heading ) ) {
 }
 
 ?>
-<div class="hogan-grid">
+<div class="hogan-grid hogan-grid-text-center">
 	<div class="hogan-grid-inner">
 		<?php
-		foreach ( $this->collection as $card ) :
-			$classnames = hogan_classnames( 'hogan-grid-item', 'hogan-grid-item-size-' . $card['size'] );
+		foreach ( $this->collection as $card_args ) :
+			$card       = savage_get_card( $card_args );
+			$classnames = hogan_classnames( 'hogan-grid-item', 'hogan-grid-item-size-' . $card_args['size'], $card['classnames'] );
 			?>
 			<div class="<?php echo esc_attr( $classnames ); ?>">
 				<div class="hogan-grid-item-inner">
-					<?php savage_card( $card ); ?>
+					<?php
+					echo $card['markup']; // WPCS: XSS OK.
+					?>
 				</div>
 			</div>
 			<?php
