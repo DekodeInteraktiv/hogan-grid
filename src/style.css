@@ -80,6 +80,7 @@
 	width: 50%;
 }
 
+.hogan-grid-item-size-xsmall,
 .hogan-grid-item-size-small {
 	&.savage-has-image {
 		align-items: flex-start;
@@ -158,6 +159,10 @@
 	.hogan-grid-item {
 		margin: calc( var( --hogan-grid-padding-large ) / 2 );
 		width: calc( 33.33333% - var( --hogan-grid-padding-large ) );
+
+		&.hogan-grid-item-size-xsmall {
+			width: calc( 25% - var( --hogan-grid-padding-large ) );
+		}
 
 		&.hogan-grid-item-size-medium {
 			width: calc( 66.66667% - var( --hogan-grid-padding-large ) );
