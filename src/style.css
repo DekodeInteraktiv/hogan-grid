@@ -2,12 +2,15 @@
  * Hogan Grid
  */
 :root {
-	--hogan-grid-padding-small: 10px;
-	--hogan-grid-padding-medium: 40px;
-	--hogan-grid-padding-large: 80px;
+	--hogan-grid-padding-small: 28px;
+	--hogan-grid-padding-medium: 20px;
+	--hogan-grid-padding-large: 60px;
+	--hogan-grid-padding-xlarge: 80px;
 }
 
 .hogan-grid {
+	font-size: 14px;
+	margin: calc( var( --hogan-grid-padding-small ) / 2 ) 0;
 	overflow: hidden;
 }
 
@@ -30,10 +33,6 @@
 	text-align: center;
 }
 
-.hogan-grid-item-size-medium {
-	text-align: left;
-}
-
 .hogan-grid-item.hogan-grid-item-size-large {
 	width: calc( 100% - var( --hogan-grid-padding-small ) );
 }
@@ -47,37 +46,8 @@
 	padding: 0 40px;
 }
 
-.hogan-grid-item-size-medium .savage-card-body,
-.hogan-grid-item-size-large .savage-card-body {
-	padding: 0 80px;
-}
-
 .hogan-grid .savage-card-body-inner {
 	margin: 40px 0;
-}
-
-.hogan-grid-item-size-medium .savage-card-body-inner,
-.hogan-grid-item-size-large .savage-card-body-inner {
-	margin: 80px 0;
-}
-
-.hogan-grid-item-size-medium .hogan-grid-item-inner,
-.hogan-grid-item-size-large .hogan-grid-item-inner {
-	align-items: flex-end;
-	display: flex;
-	height: 100%;
-}
-
-.hogan-grid-item-size-large .hogan-grid-item-inner {
-	align-items: center;
-}
-
-.hogan-grid-item-size-medium .savage-card-image,
-.hogan-grid-item-size-medium .savage-card-image + .savage-card-body,
-.hogan-grid-item-size-large .savage-card-image,
-.hogan-grid-item-size-large .savage-card-image + .savage-card-body {
-	flex: 0 0 50%;
-	width: 50%;
 }
 
 .hogan-grid-item-size-xsmall,
@@ -105,11 +75,13 @@
 }
 
 .hogan-grid-item-size-medium .savage-card-image-inner {
-	padding-bottom: 100%;
+	padding-bottom: 110%;
+	position: relative;
 }
 
 .hogan-grid-item-size-large .savage-card-image-inner {
 	padding-bottom: 88%;
+	position: relative;
 }
 
 .hogan-grid .savage-card-image-image {
@@ -122,11 +94,6 @@
 	top: 0;
 }
 
-.hogan-grid-item-size-medium .savage-card-image-image,
-.hogan-grid-item-size-large .savage-card-image-image {
-	right: 50%;
-}
-
 .hogan-grid .savage-card-link {
 	height: 100%;
 	left: 0;
@@ -135,23 +102,99 @@
 	width: 100%;
 }
 
-@media screen and ( min-width: 700px ) {
+.hogan-grid .savage-card-heading {
+	font-size: 18px;
+}
+
+@media screen and ( min-width: 768px ) {
+	.hogan-grid {
+		font-size: 13px;
+		margin: calc( var( --hogan-grid-padding-medium ) / 2 ) 0;
+	}
+
 	.hogan-grid-inner {
 		margin: 0 calc( - var( --hogan-grid-padding-medium ) / 2 );
 	}
 
-	.hogan-grid-item {
-		margin: calc( var( --hogan-grid-padding-medium ) / 2 );
-		width: calc( 50% - var( --hogan-grid-padding-medium ) );
+	.hogan-grid-item-size-medium {
+		text-align: left;
 	}
 
-	.hogan-grid-item.hogan-grid-item-size-medium,
-	.hogan-grid-item.hogan-grid-item-size-large {
-		width: calc( 100% - var( --hogan-grid-padding-medium ) );
+	.hogan-grid-item {
+		margin: calc( var( --hogan-grid-padding-medium ) / 2 );
+		width: calc( 33.33333% - var( --hogan-grid-padding-medium ) );
+
+		&.hogan-grid-item-size-xsmall {
+			width: calc( 25% - var( --hogan-grid-padding-medium ) );
+		}
+
+		&.hogan-grid-item-size-medium {
+			width: calc( 66.66667% - var( --hogan-grid-padding-medium ) );
+		}
+
+		&.hogan-grid-item-size-large {
+			width: calc( 100% - var( --hogan-grid-padding-medium ) );
+		}
+	}
+
+	.hogan-grid-item-size-medium .hogan-grid-item-inner,
+	.hogan-grid-item-size-large .hogan-grid-item-inner {
+		align-items: flex-end;
+		display: flex;
+		height: 100%;
+		position: static;
+	}
+
+	.hogan-grid-item-size-large .hogan-grid-item-inner {
+		align-items: center;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-image-image,
+	.hogan-grid-item-size-large .savage-card-image-image {
+		right: 50%;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body-inner,
+	.hogan-grid-item-size-large .savage-card-body-inner {
+		margin: 80px 0;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-image-inner {
+		padding-bottom: 100%;
+		position: static;
+	}
+
+	.hogan-grid-item-size-large .savage-card-image-inner {
+		position: static;
+	}
+	.hogan-grid-item-size-medium .savage-card-image,
+	.hogan-grid-item-size-medium .savage-card-image + .savage-card-body,
+	.hogan-grid-item-size-large .savage-card-image,
+	.hogan-grid-item-size-large .savage-card-image + .savage-card-body {
+		flex: 0 0 50%;
+		width: 50%;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body,
+	.hogan-grid-item-size-large .savage-card-body {
+		padding: 0 30px;
+	}
+
+	.hogan-grid .savage-card-body-inner {
+		margin: 30px 0;
+	}
+
+	.hogan-grid .savage-card-heading {
+		font-size: 16px;
 	}
 }
 
-@media screen and ( min-width: 1000px ) {
+@media screen and ( min-width: 1280px ) {
+	.hogan-grid {
+		font-size: 14px;
+		margin: calc( var( --hogan-grid-padding-large ) / 2 ) 0;
+	}
+
 	.hogan-grid-inner {
 		margin: 0 calc( - var( --hogan-grid-padding-large ) / 2 );
 	}
@@ -171,5 +214,58 @@
 		&.hogan-grid-item-size-large {
 			width: calc( 100% - var( --hogan-grid-padding-large ) );
 		}
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body,
+	.hogan-grid-item-size-large .savage-card-body {
+		padding: 0 60px;
+	}
+
+	.hogan-grid .savage-card-body-inner {
+		margin: 40px 0;
+	}
+
+	.hogan-grid .savage-card-heading {
+		font-size: 20px;
+	}
+}
+
+@media screen and ( min-width: 1500px ) {
+	.hogan-grid {
+		margin: calc( var( --hogan-grid-padding-xlarge ) / 2 ) 0;
+	}
+
+	.hogan-grid-inner {
+		margin: 0 calc( - var( --hogan-grid-padding-xlarge ) / 2 );
+	}
+
+	.hogan-grid-item {
+		margin: calc( var( --hogan-grid-padding-xlarge ) / 2 );
+		width: calc( 33.33333% - var( --hogan-grid-padding-xlarge ) );
+
+		&.hogan-grid-item-size-xsmall {
+			width: calc( 25% - var( --hogan-grid-padding-xlarge ) );
+		}
+
+		&.hogan-grid-item-size-medium {
+			width: calc( 66.66667% - var( --hogan-grid-padding-xlarge ) );
+		}
+
+		&.hogan-grid-item-size-large {
+			width: calc( 100% - var( --hogan-grid-padding-xlarge ) );
+		}
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body,
+	.hogan-grid-item-size-large .savage-card-body {
+		padding: 0 65px;
+	}
+
+	.hogan-grid .savage-card-body-inner {
+		margin: 55px 0;
+	}
+
+	.hogan-grid .savage-card-heading {
+		font-size: 24px;
 	}
 }
