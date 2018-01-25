@@ -44,6 +44,16 @@
 
 .hogan-grid .savage-card-body {
 	padding: 0 40px;
+
+	&::before,
+	&::after {
+		content: "";
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
 }
 
 .hogan-grid .savage-card-body-inner {
