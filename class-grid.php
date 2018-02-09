@@ -136,7 +136,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'sub_fields' => [
 							[
 								'type'          => 'button_group',
-								'key'           => $this->field_key . 'dynamic_card_style',
+								'key'           => $this->field_key . '_dynamic_card_style',
 								'label'         => __( 'Card Style', 'hogan-grid' ),
 								'name'          => 'card_style',
 								'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
@@ -152,7 +152,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							],
 							[
 								'type'          => 'select',
-								'key'           => $this->field_key . 'dynamic_card_content_type',
+								'key'           => $this->field_key . '_dynamic_card_content_type',
 								'label'         => __( 'Content Type', 'hogan-grid' ),
 								'name'          => 'card_content_type',
 								'instructions'  => __( 'Select the content type to build cards from', 'hogan-grid' ),
@@ -237,6 +237,21 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						break;
 
 					case 'dynamic_content':
+						$cards_query = new \WP_Query( [
+							'fields'         => 'ids',
+							'post_type'      => $group['card_content_type'],
+							'posts_per_page' => $group['number_of_items'],
+						] );
+
+						if ( $cards_query->have_posts() ) {
+							foreach ( $cards_query->posts as $card ) {
+								$cards[] = [
+									'id'   => $card,
+									'type' => $group['card_content_type'],
+									'size' => $group['card_style'],
+								];
+							}
+						}
 						break;
 
 					default:
