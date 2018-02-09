@@ -61,15 +61,19 @@
 	margin: 40px 0;
 }
 
-.hogan-grid .savage-card-icon-content {
+.hogan-grid .savage-card-icon {
 	background-color: #f3f3f3;
+	position: relative;
+}
+
+.hogan-grid .savage-card-icon,
+.hogan-grid .savage-card-avatar {
 	border-radius: 50%;
 	height: 65px;
-	position: relative;
 	width: 65px;
 }
 
-.hogan-grid .savage-card-icon-content svg {
+.hogan-grid .savage-card-icon svg {
 	height: 50%;
 	left: 50%;
 	position: absolute;
@@ -83,7 +87,7 @@
 	&.savage-has-image {
 		align-items: flex-start;
 
-		& .savage-card-icon {
+		& .savage-card-body-header {
 			height: 0;
 			left: 0;
 			padding-bottom: var( --hogan-grid-image-ratio );
@@ -92,7 +96,7 @@
 			width: 100%;
 		}
 
-		& .savage-card-icon-inner {
+		& .savage-card-body-header-inner {
 			bottom: 0;
 			left: 50%;
 			position: absolute;
@@ -100,7 +104,7 @@
 		}
 	}
 
-	& .savage-card-icon-content {
+	& .savage-card-icon {
 		margin: 0 auto;
 	}
 
@@ -236,7 +240,8 @@
 		font-size: 16px;
 	}
 
-	.hogan-grid .savage-card-icon-content {
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
 		height: 55px;
 		width: 55px;
 	}
@@ -282,7 +287,8 @@
 		font-size: 20px;
 	}
 
-	.hogan-grid .savage-card-icon-content {
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
 		height: 75px;
 		width: 75px;
 	}
@@ -327,7 +333,8 @@
 		font-size: 24px;
 	}
 
-	.hogan-grid .savage-card-icon-content {
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
 		height: 85px;
 		width: 85px;
 	}
