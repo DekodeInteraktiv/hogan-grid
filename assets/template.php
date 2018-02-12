@@ -30,7 +30,12 @@ if ( ! empty( $this->heading ) ) {
 		<?php
 		foreach ( $this->collection as $card_args ) :
 			$card       = savage_get_card( $card_args );
-			$classnames = hogan_classnames( 'hogan-grid-item', 'hogan-grid-item-size-' . $card_args['size'], $card['classnames'] );
+			$classnames = hogan_classnames(
+				'hogan-grid-item',
+				'hogan-grid-item-size-' . $card_args['size'],
+				'hogan-grid-item-type-' . $card_args['type'],
+				$card['classnames']
+			);
 			?>
 			<div class="<?php echo esc_attr( $classnames ); ?>">
 				<div class="hogan-grid-item-inner">
