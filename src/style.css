@@ -2,6 +2,7 @@
  * Hogan Grid
  */
 :root {
+	--hogan-grid-image-ratio: 77.75%;
 	--hogan-grid-padding-small: 28px;
 	--hogan-grid-padding-medium: 20px;
 	--hogan-grid-padding-large: 60px;
@@ -60,10 +61,51 @@
 	margin: 40px 0;
 }
 
+.hogan-grid .savage-card-icon {
+	background-color: #f3f3f3;
+	position: relative;
+}
+
+.hogan-grid .savage-card-icon,
+.hogan-grid .savage-card-avatar {
+	border-radius: 50%;
+	height: 65px;
+	width: 65px;
+}
+
+.hogan-grid .savage-card-icon svg {
+	height: 50%;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate( -50%, -50% );
+	width: 50%;
+}
+
 .hogan-grid-item-size-xsmall,
 .hogan-grid-item-size-small {
 	&.savage-has-image {
 		align-items: flex-start;
+
+		& .savage-card-body-header {
+			height: 0;
+			left: 0;
+			padding-bottom: var( --hogan-grid-image-ratio );
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		& .savage-card-body-header-inner {
+			bottom: 0;
+			left: 50%;
+			position: absolute;
+			transform: translate( -50%, 50% );
+		}
+	}
+
+	& .savage-card-icon {
+		margin: 0 auto;
 	}
 
 	& .savage-card-image {
@@ -74,12 +116,12 @@
 		width: 100%;
 
 		& + .savage-card-body {
-			padding-top: 77.75%;
+			padding-top: var( --hogan-grid-image-ratio );
 		}
 	}
 
 	& .savage-card-image-inner {
-		padding-bottom: 77.75%;
+		padding-bottom: var( --hogan-grid-image-ratio );
 		position: relative;
 	}
 }
@@ -197,6 +239,12 @@
 	.hogan-grid .savage-card-heading {
 		font-size: 16px;
 	}
+
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
+		height: 55px;
+		width: 55px;
+	}
 }
 
 @media screen and ( min-width: 1280px ) {
@@ -238,6 +286,12 @@
 	.hogan-grid .savage-card-heading {
 		font-size: 20px;
 	}
+
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
+		height: 75px;
+		width: 75px;
+	}
 }
 
 @media screen and ( min-width: 1500px ) {
@@ -277,5 +331,11 @@
 
 	.hogan-grid .savage-card-heading {
 		font-size: 24px;
+	}
+
+	.hogan-grid .savage-card-icon,
+	.hogan-grid .savage-card-avatar {
+		height: 85px;
+		width: 85px;
 	}
 }
