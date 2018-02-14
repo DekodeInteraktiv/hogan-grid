@@ -123,7 +123,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 									0 => 'featured_image',
 								],
 								'min'           => 1,
-								'max'           => 10,
+								'max'           => apply_filters( 'hogan/module/grid/static_content_limit', '' ),
 								'return_format' => 'id',
 							],
 						],
