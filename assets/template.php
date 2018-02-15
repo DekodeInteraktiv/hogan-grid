@@ -17,13 +17,6 @@ namespace Dekode\Hogan;
 if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) || ! function_exists( 'savage_get_card' ) ) {
 	return;
 }
-
-if ( ! empty( $this->heading ) ) {
-	hogan_component( 'heading', [
-		'title' => $this->heading,
-	] );
-}
-
 ?>
 <div class="hogan-grid hogan-grid-text-center">
 	<div class="hogan-grid-inner">

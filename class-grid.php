@@ -66,9 +66,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$fields = [];
 
-			// Heading field can be disabled using filter hogan/module/grid/heading/enabled (true/false).
-			hogan_append_heading_field( $fields, $this );
-
 			array_push( $fields, [
 				'key'          => $this->field_key . '_flex',
 				'label'        => '',
