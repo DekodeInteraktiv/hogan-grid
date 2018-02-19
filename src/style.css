@@ -88,15 +88,20 @@
 		align-items: flex-start;
 
 		& .savage-card-body-header {
-			height: 0;
 			left: 0;
-			padding-bottom: var( --hogan-grid-image-ratio );
 			position: absolute;
 			top: 0;
 			width: 100%;
 		}
 
 		& .savage-card-body-header-inner {
+			height: 0;
+			padding-bottom: var( --hogan-grid-image-ratio );
+			position: relative;
+			width: 100%;
+		}
+
+		& .savage-card-body-header-content {
 			bottom: 0;
 			left: 50%;
 			position: absolute;
