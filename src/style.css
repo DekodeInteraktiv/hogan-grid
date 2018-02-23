@@ -61,25 +61,35 @@
 	margin: 40px 0;
 }
 
-.hogan-grid .savage-card-icon {
+.hogan-grid .savage-card-icon,
+.hogan-grid .savage-card-meta {
 	background-color: #f3f3f3;
 	position: relative;
 }
 
 .hogan-grid .savage-card-icon,
-.hogan-grid .savage-card-avatar {
+.hogan-grid .savage-card-avatar,
+.hogan-grid .savage-card-meta {
 	border-radius: 50%;
 	height: 65px;
 	width: 65px;
 }
 
-.hogan-grid .savage-card-icon svg {
-	height: 50%;
+.hogan-grid .savage-card-icon svg,
+.hogan-grid .savage-card-meta-inner {
 	left: 50%;
 	position: absolute;
 	top: 50%;
 	transform: translate( -50%, -50% );
+}
+
+.hogan-grid .savage-card-icon svg {
+	height: 50%;
 	width: 50%;
+}
+
+.hogan-grid .savage-card-meta-inner {
+	font-size: 12px;
 }
 
 .hogan-grid-item-size-xsmall,
@@ -109,7 +119,8 @@
 		}
 	}
 
-	& .savage-card-icon {
+	& .savage-card-icon,
+	& .savage-card-meta {
 		margin: 0 auto;
 	}
 
@@ -246,7 +257,8 @@
 	}
 
 	.hogan-grid .savage-card-icon,
-	.hogan-grid .savage-card-avatar {
+	.hogan-grid .savage-card-avatar,
+	.hogan-grid .savage-card-meta {
 		height: 55px;
 		width: 55px;
 	}
@@ -293,9 +305,14 @@
 	}
 
 	.hogan-grid .savage-card-icon,
-	.hogan-grid .savage-card-avatar {
+	.hogan-grid .savage-card-avatar,
+	.hogan-grid .savage-card-meta {
 		height: 75px;
 		width: 75px;
+	}
+
+	.hogan-grid .savage-card-meta-inner {
+		font-size: 14px;
 	}
 }
 
@@ -339,7 +356,8 @@
 	}
 
 	.hogan-grid .savage-card-icon,
-	.hogan-grid .savage-card-avatar {
+	.hogan-grid .savage-card-avatar,
+	.hogan-grid .savage-card-meta {
 		height: 85px;
 		width: 85px;
 	}
