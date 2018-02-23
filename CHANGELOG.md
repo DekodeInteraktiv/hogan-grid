@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.2
 - Styled meta info added in [DekodeInteraktiv/savage-cards#31](https://github.com/DekodeInteraktiv/savage-cards/pull/31)
 
 ## 1.1.1
