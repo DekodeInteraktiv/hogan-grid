@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Styled meta info added in [DekodeInteraktiv/savage-cards#31](https://github.com/DekodeInteraktiv/savage-cards/pull/31)
+
 ## 1.1.1
 - Fix a Firefox position bug on savage avatar/icon component. [#18](https://github.com/DekodeInteraktiv/hogan-grid/issues/18)
 
