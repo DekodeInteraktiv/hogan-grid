@@ -18,9 +18,7 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) || ! function_exists(
 	return;
 }
 
-$classnames = hogan_classnames( 'hogan-grid', [
-	'hogan-grid-text-' . $this->text_align => ! empty( $this->text_align ),
-] );
+$classnames = hogan_classnames( 'hogan-grid', 'hogan-grid-text-' . $this->text_align );
 ?>
 <div class="<?php echo esc_attr( $classnames ); ?>">
 	<div class="hogan-grid-inner">

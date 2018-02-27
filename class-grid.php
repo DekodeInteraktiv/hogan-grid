@@ -31,7 +31,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		/**
 		 * Text align
 		 *
-		 * @var string|bool
+		 * @var string
 		 */
 		public $text_align = 'center';
 
@@ -207,7 +207,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
 			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
-			$this->text_align = apply_filters( 'hogan/module/grid/template/text-align', 'center' );
+			$this->text_align = (string) apply_filters( 'hogan/module/grid/template/text-align', 'center' );
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
 		}
