@@ -13,7 +13,7 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 
 ## Available filters
 - `hogan/module/grid/heading/enabled (true/false).` for disabling module header
-- `hogan/module/grid/template/align-text` - text align classname. Default `center`.
+- `hogan/module/grid/template/text-align` - text align classname. Default `center`.
 - `hogan/module/grid/static_content_post_types` for including custom post types in the ACF relationship field for static content.
 ```
 //default values
