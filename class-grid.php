@@ -29,6 +29,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $collection;
 
 		/**
+		 * Text align
+		 *
+		 * @var string|bool
+		 */
+		public $text_align = 'center';
+
+		/**
 		 * Module constructor.
 		 */
 		public function __construct() {
@@ -200,6 +207,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
 			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
+			$this->text_align = apply_filters( 'hogan/module/grid/template/align-text', 'center' );
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
 		}
