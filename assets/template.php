@@ -17,8 +17,10 @@ namespace Dekode\Hogan;
 if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Grid ) || ! function_exists( 'savage_get_card' ) ) {
 	return;
 }
+
+$classnames = hogan_classnames( 'hogan-grid', 'hogan-grid-text-' . $this->text_align );
 ?>
-<div class="hogan-grid hogan-grid-text-center">
+<div class="<?php echo esc_attr( $classnames ); ?>">
 	<div class="hogan-grid-inner">
 		<?php
 		foreach ( $this->collection as $card_args ) :

@@ -13,6 +13,7 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 
 ## Available filters
 - `hogan/module/grid/heading/enabled (true/false).` for disabling module header
+- `hogan/module/grid/template/text-align` - text align classname. Default `center`.
 - `hogan/module/grid/static_content_post_types` for including custom post types in the ACF relationship field for static content.
 ```
 //default values
@@ -33,7 +34,7 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 ```
 
 - `hogan/module/grid/static_content_taxonomy`  - which taxonomies to allow content for in the relationship field (default empty array).
-- `hogan/module/grid/static_content_limit` - max number static posts allowed in module. Default no limit. 
+- `hogan/module/grid/static_content_limit` - max number static posts allowed in module. Default no limit.
 
 - `hogan/module/grid/dynamic_content_post_types` - array with post types to allow in dynamic selection
 ```
