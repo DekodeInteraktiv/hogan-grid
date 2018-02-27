@@ -224,18 +224,20 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 				return '';
 			}
 
-			$cards = [];
+			$cards         = [];
+			$fetched_posts = [];
 
 			foreach ( $data as $group ) {
 
 				switch ( $group['acf_fc_layout'] ) {
 
 					case 'static_content':
-						foreach ( $group['posts_list'] as $card ) {
+						foreach ( $group['posts_list'] as $post_id ) {
+							$fetched_posts[] = $post_id;
 
 							$cards[] = [
-								'id'   => $card,
-								'type' => get_post_type( $card ),
+								'id'   => $post_id,
+								'type' => get_post_type( $post_id ),
 								'size' => $group['card_style'],
 							];
 						}
@@ -246,12 +248,15 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
 							'posts_per_page' => $group['number_of_items'],
+							'post__not_in'   => $fetched_posts,
 						] );
 
 						if ( $cards_query->have_posts() ) {
-							foreach ( $cards_query->posts as $card ) {
+							foreach ( $cards_query->posts as $post_id ) {
+								$fetched_posts[] = $post_id;
+
 								$cards[] = [
-									'id'   => $card,
+									'id'   => $post_id,
 									'type' => $group['card_content_type'],
 									'size' => $group['card_style'],
 								];
