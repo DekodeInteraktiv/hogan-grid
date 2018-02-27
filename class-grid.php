@@ -33,7 +33,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 *
 		 * @var string
 		 */
-		public $text_align = 'center';
+		public $text_align;
 
 		/**
 		 * Module constructor.
