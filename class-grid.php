@@ -36,6 +36,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $text_align;
 
 		/**
+		 * Fetched posts on page
+		 *
+		 * @var array
+		 */
+		public $fetched_posts = [];
+
+		/**
 		 * Module constructor.
 		 */
 		public function __construct() {
@@ -224,8 +231,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 				return '';
 			}
 
-			$cards         = [];
-			$fetched_posts = [];
+			$cards = [];
 
 			foreach ( $data as $group ) {
 
@@ -233,7 +239,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 					case 'static_content':
 						foreach ( $group['posts_list'] as $post_id ) {
-							$fetched_posts[] = $post_id;
+							$this->fetched_posts[] = $post_id;
 
 							$cards[] = [
 								'id'   => $post_id,
@@ -248,12 +254,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
 							'posts_per_page' => $group['number_of_items'],
-							'post__not_in'   => $fetched_posts,
+							'post__not_in'   => $this->fetched_posts,
 						] );
 
 						if ( $cards_query->have_posts() ) {
 							foreach ( $cards_query->posts as $post_id ) {
-								$fetched_posts[] = $post_id;
+								$this->fetched_posts[] = $post_id;
 
 								$cards[] = [
 									'id'   => $post_id,
