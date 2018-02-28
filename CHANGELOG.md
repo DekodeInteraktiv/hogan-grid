@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Added filter `hogan/module/grid/template/text-align` to change text align classname.
+- Make sure dynamic posts doesn't show same card multiple times.
 
 ## 1.1.2
 - Styled meta info added in [DekodeInteraktiv/savage-cards#31](https://github.com/DekodeInteraktiv/savage-cards/pull/31)

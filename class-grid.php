@@ -36,6 +36,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $text_align;
 
 		/**
+		 * Fetched posts on page
+		 *
+		 * @var array
+		 */
+		public $fetched_posts = [];
+
+		/**
 		 * Module constructor.
 		 */
 		public function __construct() {
@@ -231,11 +238,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 				switch ( $group['acf_fc_layout'] ) {
 
 					case 'static_content':
-						foreach ( $group['posts_list'] as $card ) {
+						foreach ( $group['posts_list'] as $post_id ) {
+							$this->fetched_posts[] = $post_id;
 
 							$cards[] = [
-								'id'   => $card,
-								'type' => get_post_type( $card ),
+								'id'   => $post_id,
+								'type' => get_post_type( $post_id ),
 								'size' => $group['card_style'],
 							];
 						}
@@ -246,12 +254,15 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
 							'posts_per_page' => $group['number_of_items'],
+							'post__not_in'   => $this->fetched_posts,
 						] );
 
 						if ( $cards_query->have_posts() ) {
-							foreach ( $cards_query->posts as $card ) {
+							foreach ( $cards_query->posts as $post_id ) {
+								$this->fetched_posts[] = $post_id;
+
 								$cards[] = [
-									'id'   => $card,
+									'id'   => $post_id,
 									'type' => $group['card_content_type'],
 									'size' => $group['card_style'],
 								];
