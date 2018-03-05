@@ -52,6 +52,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 
+			add_filter( 'acf/fields/relationship/query/name=posts_list', [ $this, 'relationship_options_filter' ], 10, 2 );
+
 			parent::__construct();
 		}
 
@@ -205,6 +207,21 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		}
 
 		/**
+		 * Filter relationship field to only show published posts.
+		 *
+		 * @param array $options WP_Query options.
+		 * @param array $field ACF field options.
+		 * @return array
+		 */
+		public function relationship_options_filter( array $options, array $field ) : array {
+			if ( $field['key'] === $this->field_key . '_posts_list' ) {
+				$options['post_status'] = [ 'publish' ];
+			}
+
+			return $options;
+		}
+
+		/**
 		 * Map raw fields from acf to object variable.
 		 *
 		 * @param array $raw_content Content values.
@@ -239,6 +256,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 					case 'static_content':
 						foreach ( $group['posts_list'] as $post_id ) {
+							if ( 'publish' !== get_post_status( $post_id ) ) {
+								continue;
+							}
+
 							$this->fetched_posts[] = $post_id;
 
 							$cards[] = [
@@ -253,6 +274,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						$cards_query = new \WP_Query( apply_filters( 'hogan/module/grid/dynamic_content_query', [
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
+							'post_status'    => 'publish',
 							'posts_per_page' => $group['number_of_items'],
 							'post__not_in'   => wp_parse_id_list( $this->fetched_posts ),
 						] ) );

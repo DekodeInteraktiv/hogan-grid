@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Only include posts with post status `publish`.
 - Meta now follows the position of the `hogan/module/grid/template/text-align` filter.
 
 ## 1.1.3
