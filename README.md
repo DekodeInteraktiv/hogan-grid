@@ -36,7 +36,7 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 - `hogan/module/grid/static_content_taxonomy`  - which taxonomies to allow content for in the relationship field (default empty array).
 - `hogan/module/grid/static_content_limit` - max number static posts allowed in module. Default no limit.
 
-- `hogan/module/grid/dynamic_content/query` - args to send to wp_query when fetching the posts.
+- `hogan/module/grid/dynamic_content_query` - args to send to wp_query when fetching the posts.
 - `hogan/module/grid/dynamic_content_post_types` - array with post types to allow in dynamic selection
 ```
 //default values
