@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Only include posts with post status `publish`.
+
 ## 1.1.3
 - Added filter `hogan/module/grid/template/text-align` to change text align classname.
 - Make sure dynamic posts doesn't show same card multiple times.
