@@ -8,4 +8,6 @@
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress-VIP" />
 	<rule ref="PHPCompatibility" />
+
+	<config name="text_domain" value="hogan-grid" />
 </ruleset>

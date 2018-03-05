@@ -30,10 +30,6 @@
 	width: calc( 100% - var( --hogan-grid-padding-small ) );
 }
 
-.hogan-grid-text-center {
-	text-align: center;
-}
-
 .hogan-grid-item.hogan-grid-item-size-large {
 	width: calc( 100% - var( --hogan-grid-padding-small ) );
 }
@@ -113,15 +109,10 @@
 
 		& .savage-card-body-header-content {
 			bottom: 0;
-			left: 50%;
+			left: 40px;
 			position: absolute;
-			transform: translate( -50%, 50% );
+			transform: translate( 0, 50% );
 		}
-	}
-
-	& .savage-card-icon,
-	& .savage-card-meta {
-		margin: 0 auto;
 	}
 
 	& .savage-card-image {
@@ -172,6 +163,23 @@
 
 .hogan-grid .savage-card-heading {
 	font-size: 18px;
+}
+
+.hogan-grid-text-center {
+	text-align: center;
+
+	& .hogan-grid-item-size-xsmall,
+	& .hogan-grid-item-size-small {
+		& .savage-card-icon,
+		& .savage-card-meta {
+			margin: 0 auto;
+		}
+
+		&.savage-has-image .savage-card-body-header-content {
+			left: 50%;
+			transform: translate( -50%, 50% );
+		}
+	}
 }
 
 @media screen and ( min-width: 768px ) {
