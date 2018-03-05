@@ -254,7 +254,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
 							'posts_per_page' => $group['number_of_items'],
-							'post__not_in'   => $this->fetched_posts,
+							'post__not_in'   => wp_parse_id_list( $this->fetched_posts ),
 						] ) );
 
 						if ( $cards_query->have_posts() ) {
