@@ -250,12 +250,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						break;
 
 					case 'dynamic_content':
-						$cards_query = new \WP_Query( [
+						$cards_query = new \WP_Query( apply_filters( 'hogan/module/grid/dynamic_content_query', [
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
 							'posts_per_page' => $group['number_of_items'],
 							'post__not_in'   => wp_parse_id_list( $this->fetched_posts ),
-						] );
+						] ) );
 
 						if ( $cards_query->have_posts() ) {
 							foreach ( $cards_query->posts as $post_id ) {
