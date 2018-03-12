@@ -170,14 +170,18 @@
 
 	& .hogan-grid-item-size-xsmall,
 	& .hogan-grid-item-size-small {
-		& .savage-card-icon,
-		& .savage-card-meta {
-			margin: 0 auto;
-		}
-
 		&.savage-has-image .savage-card-body-header-content {
 			left: 50%;
 			transform: translate( -50%, 50% );
+		}
+	}
+
+	& .hogan-grid-item-size-xsmall,
+	& .hogan-grid-item-size-small,
+	& .hogan-grid-item-size-large {
+		& .savage-card-icon,
+		& .savage-card-meta {
+			margin: 0 auto;
 		}
 	}
 }
