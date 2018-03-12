@@ -4,6 +4,7 @@
 
 	<arg value="ps" />
 	<arg name="extensions" value="php" />
+	<config name="text_domain" value="hogan-grid" />
 
 	<file>.</file>
 	<exclude-pattern>./vendor</exclude-pattern>
@@ -16,6 +17,5 @@
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress-VIP" />
 	<rule ref="PHPCompatibility" />
-
-	<config name="text_domain" value="hogan-grid" />
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
 </ruleset>
