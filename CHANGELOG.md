@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Fixed a bug on large cards when text align is center. Meta/icon was left align. They are now center aligned. [#32](https://github.com/DekodeInteraktiv/hogan-grid/issues/32)
+
 ## 1.1.4
 - Only include posts with post status `publish`.
 - Meta now follows the position of the `hogan/module/grid/template/text-align` filter.
