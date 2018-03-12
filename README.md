@@ -55,8 +55,3 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 	'large'  => __( 'Full', 'hogan-grid' ),
 ]
 ```
-
-## TODO
-- set background color or image for module
-- template output
-- dynamic selection with logic
