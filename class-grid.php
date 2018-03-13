@@ -294,7 +294,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
 			$this->text_align = (string) apply_filters( 'hogan/module/grid/template/text-align', 'center' );
-			$this->theme      = $raw_content['theme'];
+			$this->theme      = $raw_content['theme'] ?? '';
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
 		}
