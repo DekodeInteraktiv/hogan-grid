@@ -1,6 +1,7 @@
-.idea
 .DS_Store
+.idea
+node_modules
+phpcs.xml
 vendor
 wp-content
-node_modules
 yarn-error.log
