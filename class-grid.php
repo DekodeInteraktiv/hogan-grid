@@ -36,6 +36,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $text_align;
 
 		/**
+		 * Theme
+		 *
+		 * @var string
+		 */
+		public $theme;
+
+		/**
 		 * Fetched posts on page
 		 *
 		 * @var array
@@ -53,6 +60,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 
 			add_filter( 'acf/fields/relationship/query/name=posts_list', [ $this, 'relationship_options_filter' ], 10, 2 );
+			add_filter( 'hogan/module/outer_wrapper_classes', [ $this, 'add_wrapper_classname' ], 10, 2 );
 
 			parent::__construct();
 		}
@@ -82,7 +90,42 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$fields = [];
 
-			array_push( $fields, [
+			/**
+			 * Filters the choices for themes in the Grid module
+			 *
+			 * The selected choice key will be used to add the classname
+			 * .hogan-grid-theme-{$key} on the module wrapper.
+			 *
+			 * @param array $choices Theme choices.
+			 */
+			$theme_choices = apply_filters( 'hogan/module/grid/themes', [] );
+
+			if ( ! empty( $theme_choices ) ) {
+				$fields[] = [
+					'key'               => $this->field_key . '_theme',
+					'label'             => esc_html__( 'Theme', 'hogan-grid' ),
+					'name'              => 'theme',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => [
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					],
+					'choices'           => $theme_choices,
+					'default_value'     => '',
+					'allow_null'        => 1,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'ajax'              => 0,
+					'return_format'     => 'value',
+					'placeholder'       => '',
+				];
+			}
+
+			$fields[] = [
 				'key'          => $this->field_key . '_flex',
 				'label'        => '',
 				'name'         => 'flex_grid',
@@ -201,7 +244,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						],
 					],
 				],
-			] );
+			];
 
 			return $fields;
 		}
@@ -222,6 +265,25 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		}
 
 		/**
+		 * Module wrapper classname.
+		 *
+		 * @param array  $classnames Wrapper classnames.
+		 * @param Module $module Module.
+		 * @return array Wrapper classnames.
+		 */
+		public function add_wrapper_classname( array $classnames, Module $module ) : array {
+			if ( $module->name !== $this->name ) {
+				return $classnames;
+			}
+
+			if ( ! empty( $module->theme ) ) {
+				$classnames[] = 'hogan-grid-theme-' . $module->theme;
+			}
+
+			return $classnames;
+		}
+
+		/**
 		 * Map raw fields from acf to object variable.
 		 *
 		 * @param array $raw_content Content values.
@@ -232,6 +294,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
 			$this->text_align = (string) apply_filters( 'hogan/module/grid/template/text-align', 'center' );
+			$this->theme      = $raw_content['theme'] ?? '';
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
 		}
