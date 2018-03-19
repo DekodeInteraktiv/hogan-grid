@@ -1,6 +1,6 @@
 # Changelog
 
-# Unreleased
+# 1.1.6
 - Added `hogan/module/grid/theme` filter. With this you can now add section theme classname.
 
 ## 1.1.5
