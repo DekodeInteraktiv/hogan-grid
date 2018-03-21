@@ -302,13 +302,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		/**
 		 * Get card layouts
 		 *
-		 * @param array $data ACF layouts.
+		 * @param bool|array $data ACF layouts.
 		 * @return array Cards collection
 		 */
-		public function structure_card_data( array $data ) : array {
+		public function structure_card_data( $data ) : array {
 
 			if ( empty( $data ) ) {
-				return '';
+				return [];
 			}
 
 			$cards = [];
