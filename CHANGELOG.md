@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 1.1.7
 - Fixed a fatal type error bug when no cards is selected backend. [#36](https://github.com/DekodeInteraktiv/hogan-grid/issues/36)
+- Added classname `.hogan-grid-has-theme` to all sections that have a theme. [#34](https://github.com/DekodeInteraktiv/hogan-grid/issues/34)
 
 ## 1.1.6
 - Added `hogan/module/grid/theme` filter. With this you can now add section theme classname.
