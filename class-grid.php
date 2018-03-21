@@ -277,6 +277,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			}
 
 			if ( ! empty( $module->theme ) ) {
+				$classnames[] = 'hogan-grid-has-theme';
 				$classnames[] = 'hogan-grid-theme-' . $module->theme;
 			}
 
