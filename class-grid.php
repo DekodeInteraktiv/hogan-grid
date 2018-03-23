@@ -293,7 +293,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 */
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
+			$this->collection = [];
+
+			if ( is_array( $raw_content['flex_grid'] ) ) {
+				$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
+			}
+
 			$this->text_align = (string) apply_filters( 'hogan/module/grid/template/text-align', 'center' );
 			$this->theme      = $raw_content['theme'] ?? '';
 			parent::load_args_from_layout_content( $raw_content, $counter );
@@ -303,18 +308,18 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		/**
 		 * Get card layouts
 		 *
-		 * @param bool|array $data ACF layouts.
+		 * @param array $data ACF layouts.
 		 * @return array Cards collection
 		 */
-		public function structure_card_data( $data ) : array {
-
-			if ( empty( $data ) ) {
-				return [];
-			}
+		public function structure_card_data( array $data ) : array {
 
 			$cards = [];
 
 			foreach ( $data as $group ) {
+
+				if ( ! isset( $group['acf_fc_layout'] ) ) {
+					continue;
+				}
 
 				switch ( $group['acf_fc_layout'] ) {
 
