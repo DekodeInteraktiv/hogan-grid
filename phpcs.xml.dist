@@ -4,5 +4,7 @@
 	<file>.</file>
 	<arg name="extensions" value="php" />
 	<config name="text_domain" value="hogan-grid" />
-	<rule ref="Dekode" />
+	<rule ref="Dekode">
+		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" />
+	</rule>
 </ruleset>
