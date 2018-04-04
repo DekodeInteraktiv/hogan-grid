@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'HOGAN_GRID_VERSION', '1.1.7' );
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_grid_load_textdomain' );
-add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module' );
+add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module', 10, 1 );
 
 /**
  * Register module text domain
@@ -38,8 +38,11 @@ function hogan_grid_load_textdomain() {
 
 /**
  * Register module in Hogan
+ *
+ * @param \Dekode\Hogan\Core $core Hogan Core instance.
+ * @return void
  */
-function hogan_grid_register_module() {
+function hogan_grid_register_module( \Dekode\Hogan\Core $core ) {
 	require_once 'class-grid.php';
-	\hogan_register_module( new \Dekode\Hogan\Grid() );
+	$core->register_module( new \Dekode\Hogan\Grid() );
 }
