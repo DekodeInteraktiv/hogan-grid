@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.8
+- Update module to new registration method introduced in [Hogan Core 1.1.7](https://github.com/DekodeInteraktiv/hogan-core/releases/tag/1.1.7)
+- Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`
+- Add Dekode Coding Standards
+
 ## 1.1.7
 - Fixed a fatal type error bug when no cards is selected backend. [#36](https://github.com/DekodeInteraktiv/hogan-grid/issues/36)
 - Added classname `.hogan-grid-has-theme` to all sections that have a theme. [#34](https://github.com/DekodeInteraktiv/hogan-grid/issues/34)

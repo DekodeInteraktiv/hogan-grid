@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-grid
  * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-grid
  * Description: Card Grid Module for Hogan
- * Version: 1.1.7
+ * Version: 1.1.8
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0-or-later
@@ -24,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HOGAN_GRID_VERSION', '1.1.7' );
+define( 'HOGAN_GRID_VERSION', '1.1.8' );
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_grid_load_textdomain' );
-add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module' );
+add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module', 10, 1 );
 
 /**
  * Register module text domain
@@ -38,8 +38,11 @@ function hogan_grid_load_textdomain() {
 
 /**
  * Register module in Hogan
+ *
+ * @param \Dekode\Hogan\Core $core Hogan Core instance.
+ * @return void
  */
-function hogan_grid_register_module() {
+function hogan_grid_register_module( \Dekode\Hogan\Core $core ) {
 	require_once 'class-grid.php';
-	\hogan_register_module( new \Dekode\Hogan\Grid() );
+	$core->register_module( new \Dekode\Hogan\Grid() );
 }
