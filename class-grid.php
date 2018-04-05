@@ -221,8 +221,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 									'page' => __( 'Pages', 'hogan-grid' ),
 								], $this ),
 								'allow_null'    => 0,
-								'multiple'      => 0,
-								'ui'            => 0,
+								'multiple'      => 1,
+								'ui'            => 1,
 								'ajax'          => 0,
 								'return_format' => 'value',
 							],
@@ -354,7 +354,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 								$cards[] = [
 									'id'   => $post_id,
-									'type' => $group['card_content_type'],
+									'type' => get_post_type( $post_id ),
 									'size' => $group['card_style'],
 								];
 							}
