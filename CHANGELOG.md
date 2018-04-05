@@ -3,6 +3,9 @@
 ## Unreleased
 - Exclude current post from `dynamic_content` [#39](https://github.com/DekodeInteraktiv/hogan-grid/pull/39)
 
+## 1.1.9
+- Module name translation fix.
+
 ## 1.1.8
 - Update module to new registration method introduced in [Hogan Core 1.1.7](https://github.com/DekodeInteraktiv/hogan-core/releases/tag/1.1.7)
 - Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`
