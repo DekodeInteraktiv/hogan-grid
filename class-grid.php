@@ -315,6 +315,14 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$cards = [];
 
+			/*
+			 * Exclude current post. This prevents `dynamic_content` from making
+			 * a card that links back the current post.
+			 */
+			if ( \is_singular() ) {
+				$this->fetched_posts[] = get_the_ID();
+			}
+
 			foreach ( $data as $group ) {
 
 				if ( ! isset( $group['acf_fc_layout'] ) ) {
