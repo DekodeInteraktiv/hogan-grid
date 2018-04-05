@@ -211,7 +211,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								'key'           => $this->field_key . '_dynamic_card_content_type',
 								'label'         => __( 'Content Type', 'hogan-grid' ),
 								'name'          => 'card_content_type',
-								'instructions'  => __( 'Select the content type to build cards from', 'hogan-grid' ),
+								'instructions'  => __( 'Select content types to build cards from', 'hogan-grid' ),
 								'required'      => 1,
 								'wrapper'       => [
 									'width' => '50',
