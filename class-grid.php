@@ -211,7 +211,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								'key'           => $this->field_key . '_dynamic_card_content_type',
 								'label'         => __( 'Content Type', 'hogan-grid' ),
 								'name'          => 'card_content_type',
-								'instructions'  => __( 'Select the content type to build cards from', 'hogan-grid' ),
+								'instructions'  => __( 'Select content types to build cards from', 'hogan-grid' ),
 								'required'      => 1,
 								'wrapper'       => [
 									'width' => '50',
@@ -221,8 +221,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 									'page' => __( 'Pages', 'hogan-grid' ),
 								], $this ),
 								'allow_null'    => 0,
-								'multiple'      => 0,
-								'ui'            => 0,
+								'multiple'      => 1,
+								'ui'            => 1,
 								'ajax'          => 0,
 								'return_format' => 'value',
 							],
@@ -354,7 +354,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 								$cards[] = [
 									'id'   => $post_id,
-									'type' => $group['card_content_type'],
+									'type' => get_post_type( $post_id ),
 									'size' => $group['card_style'],
 								];
 							}

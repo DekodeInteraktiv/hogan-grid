@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Added option to select multiple post types in dynamic content. [#41](https://github.com/DekodeInteraktiv/hogan-grid/issues/41)
+
 ## 1.1.9
 - Module name translation fix.
 
