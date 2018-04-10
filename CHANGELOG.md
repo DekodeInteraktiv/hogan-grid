@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Exclude current post from `dynamic_content` [#39](https://github.com/DekodeInteraktiv/hogan-grid/pull/39)
 - Added option to select multiple post types in dynamic content. [#41](https://github.com/DekodeInteraktiv/hogan-grid/issues/41)
 
 ## 1.1.9
