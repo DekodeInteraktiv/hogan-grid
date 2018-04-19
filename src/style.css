@@ -295,6 +295,10 @@
 		margin: 0 calc( - var( --hogan-grid-padding-large ) / 2 );
 	}
 
+	.hogan-grid-size-xsmall .hogan-grid-inner {
+		margin: 0 calc( - var( --hogan-grid-small-padding-large ) / 2 );
+	}
+
 	.hogan-grid-item {
 		margin: calc( var( --hogan-grid-padding-large ) / 2 );
 		width: calc( 33.33333% - var( --hogan-grid-padding-large ) );
@@ -349,6 +353,10 @@
 
 	.hogan-grid-inner {
 		margin: 0 calc( - var( --hogan-grid-padding-xlarge ) / 2 );
+	}
+
+	.hogan-grid-size-xsmall .hogan-grid-inner {
+		margin: 0 calc( - var( --hogan-grid-small-padding-xlarge ) / 2 );
 	}
 
 	.hogan-grid-item {
