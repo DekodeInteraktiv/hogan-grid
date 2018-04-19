@@ -43,6 +43,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $theme;
 
 		/**
+		 * Grid size
+		 *
+		 * @var string
+		 */
+		public $grid_size;
+
+		/**
 		 * Fetched posts on page
 		 *
 		 * @var array
@@ -100,6 +107,22 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			 */
 			$theme_choices = apply_filters( 'hogan/module/grid/themes', [] );
 
+			/**
+			 * Filters if the theme should support grid sizes.
+			 *
+			 * When enabled the theme get the option to select small (4 column cards),
+			 * dynamic (small, double or large cards) or large (2 column cards) grid
+			 * design.
+			 *
+			 * @param boolean $enable_grid_sizes Enable or disable grid size option.
+			 */
+			$show_grid_size_option = apply_filters( 'hogan/module/grid/enable_grid_sizes', false );
+
+			/**
+			 * Grid size and theme option field size based on enabled features.
+			 */
+			$theme_grid_field_size = ( ! empty( $theme_choices ) && $show_grid_size_option ) ? '50' : '100';
+
 			if ( ! empty( $theme_choices ) ) {
 				$fields[] = [
 					'key'               => $this->field_key . '_theme',
@@ -110,12 +133,41 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
-						'width' => '',
+						'width' => $theme_grid_field_size,
 						'class' => '',
 						'id'    => '',
 					],
 					'choices'           => $theme_choices,
 					'default_value'     => '',
+					'allow_null'        => 1,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'ajax'              => 0,
+					'return_format'     => 'value',
+					'placeholder'       => '',
+				];
+			}
+
+			if ( $show_grid_size_option ) {
+				$fields[] = [
+					'key'               => $this->field_key . '_grid_size',
+					'label'             => esc_html__( 'Grid size', 'hogan-grid' ),
+					'name'              => 'grid_size',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => [
+						'width' => $theme_grid_field_size,
+						'class' => '',
+						'id'    => '',
+					],
+					'choices'           => apply_filters( 'hogan/module/grid/grid_sizes', [
+						'xsmall'   => 'Small',
+						'dynamic'  => 'Dynamic',
+						'large-50' => 'Large',
+					] ),
+					'default_value'     => 'dynamic',
 					'allow_null'        => 1,
 					'multiple'          => 0,
 					'ui'                => 0,
@@ -226,7 +278,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 * @return array
 		 */
 		private function card_style_field( string $key ) : array {
-			return [
+			$field = [
 				'type'          => 'button_group',
 				'key'           => $key,
 				'label'         => __( 'Card Style', 'hogan-grid' ),
@@ -242,6 +294,20 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 				'layout'        => 'horizontal',
 				'return_format' => 'value',
 			];
+
+			if ( apply_filters( 'hogan/module/grid/enable_grid_sizes', false ) ) {
+				$field['conditional_logic'] = [
+					[
+						[
+							'field'    => $this->field_key . '_grid_size',
+							'operator' => '==',
+							'value'    => 'dynamic',
+						],
+					],
+				];
+			}
+
+			return $field;
 		}
 
 		/**
@@ -290,6 +356,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			$this->collection = [];
 
+			$this->grid_size = isset( $raw_content['grid_size'] ) ? $raw_content['grid_size'] : 'dynamic';
+
 			if ( is_array( $raw_content['flex_grid'] ) ) {
 				$this->collection = $this->structure_card_data( $raw_content['flex_grid'] );
 			}
@@ -298,6 +366,20 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			$this->theme      = $raw_content['theme'] ?? '';
 			parent::load_args_from_layout_content( $raw_content, $counter );
 
+		}
+
+		/**
+		 * Get card size
+		 *
+		 * @param array $group Card group.
+		 * @return string Card size.
+		 */
+		private function get_card_size( array $group ) : string {
+			if ( 'dynamic' !== $this->grid_size ) {
+				return $this->grid_size;
+			}
+
+			return $group['card_style'];
 		}
 
 		/**
@@ -337,7 +419,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							$cards[] = [
 								'id'   => $post_id,
 								'type' => get_post_type( $post_id ),
-								'size' => $group['card_style'],
+								'size' => $this->get_card_size( $group ),
 							];
 						}
 						break;
@@ -358,7 +440,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								$cards[] = [
 									'id'   => $post_id,
 									'type' => get_post_type( $post_id ),
-									'size' => $group['card_style'],
+									'size' => $this->get_card_size( $group ),
 								];
 							}
 						}
