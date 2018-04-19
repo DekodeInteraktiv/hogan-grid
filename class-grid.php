@@ -163,9 +163,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'id'    => '',
 					],
 					'choices'           => apply_filters( 'hogan/module/grid/grid_sizes', [
-						'xsmall'   => 'Small',
-						'dynamic'  => 'Dynamic',
-						'large-50' => 'Large',
+						'xsmall'   => esc_html__( 'Small', 'hogan-grid' ),
+						'dynamic'  => esc_html__( 'Dynamic', 'hogan-grid' ),
+						'large-50' => esc_html__( 'Large', 'hogan-grid' ),
 					] ),
 					'default_value'     => 'dynamic',
 					'allow_null'        => 1,
