@@ -7,6 +7,8 @@
 	--hogan-grid-padding-medium: 20px;
 	--hogan-grid-padding-large: 60px;
 	--hogan-grid-padding-xlarge: 80px;
+	--hogan-grid-small-padding-large: 42px;
+	--hogan-grid-small-padding-xlarge: 48px;
 }
 
 .hogan-grid {
@@ -298,7 +300,8 @@
 		width: calc( 33.33333% - var( --hogan-grid-padding-large ) );
 
 		&.hogan-grid-item-size-xsmall {
-			width: calc( 25% - var( --hogan-grid-padding-large ) );
+			margin: calc( var( --hogan-grid-small-padding-large ) / 2 );
+			width: calc( 25% - var( --hogan-grid-small-padding-large ) );
 		}
 
 		&.hogan-grid-item-size-large-50 {
@@ -353,7 +356,8 @@
 		width: calc( 33.33333% - var( --hogan-grid-padding-xlarge ) );
 
 		&.hogan-grid-item-size-xsmall {
-			width: calc( 25% - var( --hogan-grid-padding-xlarge ) );
+			margin: calc( var( --hogan-grid-small-padding-xlarge ) / 2 );
+			width: calc( 25% - var( --hogan-grid-small-padding-xlarge ) );
 		}
 
 		&.hogan-grid-item-size-large-50 {
