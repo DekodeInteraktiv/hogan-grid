@@ -141,22 +141,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'label'      => esc_html__( 'Static content', 'hogan-grid' ),
 						'display'    => 'block',
 						'sub_fields' => [
-							[
-								'type'          => 'button_group',
-								'key'           => $this->field_key . '_card_style',
-								'label'         => __( 'Card Style', 'hogan-grid' ),
-								'name'          => 'card_style',
-								'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
-								'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
-									'small'  => __( 'Single', 'hogan-grid' ),
-									'medium' => __( 'Double', 'hogan-grid' ),
-									'large'  => __( 'Full', 'hogan-grid' ),
-								], $this ),
-								'allow_null'    => 0,
-								'default_value' => 'automatic',
-								'layout'        => 'horizontal',
-								'return_format' => 'value',
-							],
+							$this->card_style_field( $this->field_key . '_card_style' ),
 							[
 								'type'          => 'relationship',
 								'key'           => $this->field_key . '_posts_list',
@@ -190,22 +175,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'label'      => esc_html__( 'Dynamic content', 'hogan-grid' ),
 						'display'    => 'block',
 						'sub_fields' => [
-							[
-								'type'          => 'button_group',
-								'key'           => $this->field_key . '_dynamic_card_style',
-								'label'         => __( 'Card Style', 'hogan-grid' ),
-								'name'          => 'card_style',
-								'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
-								'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
-									'small'  => __( 'Single', 'hogan-grid' ),
-									'medium' => __( 'Double', 'hogan-grid' ),
-									'large'  => __( 'Full', 'hogan-grid' ),
-								], $this ),
-								'allow_null'    => 0,
-								'default_value' => 'automatic',
-								'layout'        => 'horizontal',
-								'return_format' => 'value',
-							],
+							$this->card_style_field( $this->field_key . '_dynamic_card_style' ),
 							[
 								'type'          => 'select',
 								'key'           => $this->field_key . '_dynamic_card_content_type',
@@ -247,6 +217,31 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			];
 
 			return $fields;
+		}
+
+		/**
+		 * Card style reusable field
+		 *
+		 * @param string $key Field key.
+		 * @return array
+		 */
+		private function card_style_field( string $key ) : array {
+			return [
+				'type'          => 'button_group',
+				'key'           => $key,
+				'label'         => __( 'Card Style', 'hogan-grid' ),
+				'name'          => 'card_style',
+				'instructions'  => __( 'Choose card type for this group', 'hogan-grid' ),
+				'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
+					'small'  => __( 'Single', 'hogan-grid' ),
+					'medium' => __( 'Double', 'hogan-grid' ),
+					'large'  => __( 'Full', 'hogan-grid' ),
+				], $this ),
+				'allow_null'    => 0,
+				'default_value' => 'automatic',
+				'layout'        => 'horizontal',
+				'return_format' => 'value',
+			];
 		}
 
 		/**
