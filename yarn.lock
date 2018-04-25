@@ -2213,9 +2213,9 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hogan-scripts@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/hogan-scripts/-/hogan-scripts-0.0.8.tgz#67421bd5e3f1c4aece0a37345e98c674523147ff"
+hogan-scripts@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/hogan-scripts/-/hogan-scripts-0.0.9.tgz#c2df06b23b192d9d96b552e01d5256770b181144"
   dependencies:
     "@babel/core" "^7.0.0-beta.39"
     "@babel/plugin-proposal-object-rest-spread" "^7.0.0-beta.39"
