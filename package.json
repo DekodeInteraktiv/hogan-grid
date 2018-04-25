@@ -13,7 +13,7 @@
     "lint": "hogan-scripts lint"
   },
   "devDependencies": {
-    "hogan-scripts": "0.0.8"
+    "hogan-scripts": "0.0.9"
   },
   "dependencies": {}
 }
