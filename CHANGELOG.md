@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.11
+- Update `hogan-scripts` - Fixes the grid on IOS8. [#52](https://github.com/DekodeInteraktiv/hogan-grid/pull/52)
+- Optimize xsmall grid padding [#50](https://github.com/DekodeInteraktiv/hogan-grid/pull/50)
+- Add grid size option [#46](https://github.com/DekodeInteraktiv/hogan-grid/pull/46)
+
 ## 1.1.10
 - Exclude current post from `dynamic_content` [#39](https://github.com/DekodeInteraktiv/hogan-grid/pull/39)
 - Added option to select multiple post types in dynamic content. [#41](https://github.com/DekodeInteraktiv/hogan-grid/issues/41)
