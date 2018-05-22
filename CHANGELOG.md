@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+- Move relative css rule position on the body-inner to label wrapper. Fixes a meta card info position that broke in 1.2.0. [#55](https://github.com/DekodeInteraktiv/hogan-grid/pull/55)
+
 ## 1.2.0
 - Added a default CSS style [#51](https://github.com/DekodeInteraktiv/hogan-grid/pull/51)
 - Added a filter to set default theme [#54](https://github.com/DekodeInteraktiv/hogan-grid/pull/54)
