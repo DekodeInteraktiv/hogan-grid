@@ -108,6 +108,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			$theme_choices = apply_filters( 'hogan/module/grid/themes', [] );
 
 			/**
+			 * Filters the default theme choice in the Grid module
+			 *
+			 * @param string $choice Default theme.
+			 */
+			$theme_default_choice = apply_filters( 'hogan/module/grid/themes/default', '' );
+
+			/**
 			 * Filters if the theme should support grid sizes.
 			 *
 			 * When enabled the theme get the option to select small (4 column cards),
@@ -138,7 +145,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'id'    => '',
 					],
 					'choices'           => $theme_choices,
-					'default_value'     => '',
+					'default_value'     => $theme_default_choice,
 					'allow_null'        => 1,
 					'multiple'          => 0,
 					'ui'                => 0,
