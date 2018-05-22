@@ -77,7 +77,6 @@
 
 .hogan-grid .savage-card-body-inner {
 	margin: 40px 0;
-	position: relative;
 }
 
 .hogan-grid-item-size-xsmall .savage-card-body-inner {
@@ -87,6 +86,10 @@
 .hogan-grid .savage-card-icon,
 .hogan-grid .savage-card-meta {
 	background-color: #f3f3f3;
+	position: relative;
+}
+
+.hogan-grid .savage-card-label-holder {
 	position: relative;
 }
 
