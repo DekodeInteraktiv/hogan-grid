@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+- Added a default CSS style [#51](https://github.com/DekodeInteraktiv/hogan-grid/pull/51)
+- Added a filter to set default theme [#54](https://github.com/DekodeInteraktiv/hogan-grid/pull/54)
+
 ## 1.1.11
 - Update `hogan-scripts` - Fixes the grid on IOS8. [#52](https://github.com/DekodeInteraktiv/hogan-grid/pull/52)
 - Optimize xsmall grid padding [#50](https://github.com/DekodeInteraktiv/hogan-grid/pull/50)
