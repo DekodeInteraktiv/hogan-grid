@@ -110,7 +110,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			/**
 			 * Filters the default theme choice in the Grid module
 			 *
-			 * @param array $choice Default theme.
+			 * @param string $choice Default theme.
 			 */
 			$theme_default_choice = apply_filters( 'hogan/module/grid/themes/default', '' );
 
