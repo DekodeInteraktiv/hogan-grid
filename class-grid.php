@@ -254,7 +254,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		/**
 		 * Dynamic sub fields
 		 */
-		private function get_dynamic_sub_fields() {
+		private function get_dynamic_sub_fields() : array {
 			$fields = [
 				$this->card_style_field( $this->field_key . '_dynamic_card_style', 50 ),
 				[
