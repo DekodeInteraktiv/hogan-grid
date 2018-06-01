@@ -504,6 +504,11 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						break;
 
 					case 'dynamic_content':
+						// Backwards comp.
+						if ( ! isset( $group['content_type'] ) ) {
+							$group['content_type'] = 'post_type';
+						}
+
 						$cards_query_args = [
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
