@@ -57,12 +57,21 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		public $fetched_posts = [];
 
 		/**
+		 * Supported taxonomies
+		 *
+		 * @var array
+		 */
+		private $taxonomies = [];
+
+		/**
 		 * Module constructor.
 		 */
 		public function __construct() {
 
 			$this->label    = __( 'Card grid', 'hogan-grid' );
 			$this->template = __DIR__ . '/assets/template.php';
+
+			$this->taxonomies = (array) apply_filters( 'hogan/module/grid/dynamic_content_taxonomies', [] );
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 
@@ -393,7 +402,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 		 */
 		public function taxonomy_choices( array $field ) : array {
 			$terms = get_terms( [
-				'taxonomy'   => (array) apply_filters( 'hogan/module/grid/dynamic_content_taxonomies', [ 'category' ] ),
+				'taxonomy'   => $this->taxonomies,
 				'hide_empty' => true,
 			]);
 
@@ -523,9 +532,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 								'relation' => 'OR',
 							];
 
-							$taxonomies = (array) apply_filters( 'hogan/module/grid/dynamic_content_taxonomies', [ 'category' ] );
-
-							foreach ( $taxonomies as $taxonomy ) {
+							foreach ( $this->taxonomies as $taxonomy ) {
 								$cards_query_args['tax_query'][] = [
 									'taxonomy' => $taxonomy,
 									'field'    => 'term_id',
