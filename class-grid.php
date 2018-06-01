@@ -243,95 +243,117 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						'name'       => 'dynamic_content',
 						'label'      => esc_html__( 'Dynamic content', 'hogan-grid' ),
 						'display'    => 'block',
-						'sub_fields' => [
-							$this->card_style_field( $this->field_key . '_dynamic_card_style', 50 ),
-							[
-								'type'          => 'number',
-								'key'           => $this->field_key . '_number_of_items',
-								'label'         => __( 'Number of items', 'hogan-grid' ),
-								'name'          => 'number_of_items',
-								'instructions'  => __( 'Set the number of items to display', 'hogan-grid' ),
-								'required'      => 1,
-								'default_value' => 3,
-								'min'           => 1,
-								'max'           => 10,
-								'step'          => 1,
-								'wrapper'       => [
-									'width' => '50',
-								],
-							],
-							[
-								'type'          => 'button_group',
-								'key'           => $this->field_key . '_dynamic_card_type',
-								'label'         => __( 'Content Type', 'hogan-grid' ),
-								'name'          => 'content_type',
-								'instructions'  => __( 'Select how to fetch posts', 'hogan-grid' ),
-								'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
-									'post_type' => __( 'Post type', 'hogan-grid' ),
-									'taxonomy'  => __( 'Category', 'hogan-grid' ),
-								], $this ),
-								'wrapper'       => [
-									'width' => '50',
-								],
-								'allow_null'    => 0,
-								'default_value' => 'automatic',
-								'layout'        => 'horizontal',
-								'return_format' => 'value',
-							],
-							[
-								'type'              => 'select',
-								'key'               => $this->field_key . '_dynamic_card_content_type',
-								'label'             => __( 'Post types', 'hogan-grid' ),
-								'name'              => 'card_content_type',
-								'instructions'      => __( 'Select post types to build cards from', 'hogan-grid' ),
-								'required'          => 1,
-								'wrapper'           => [
-									'width' => '50',
-								],
-								'choices'           => apply_filters( 'hogan/module/grid/dynamic_content_post_types', [
-									'post' => __( 'Posts', 'hogan-grid' ),
-									'page' => __( 'Pages', 'hogan-grid' ),
-								], $this ),
-								'allow_null'        => 0,
-								'multiple'          => 1,
-								'ui'                => 1,
-								'ajax'              => 0,
-								'return_format'     => 'value',
-								'conditional_logic' => [
-									[
-										'field'    => $this->field_key . '_dynamic_card_type',
-										'operator' => '==',
-										'value'    => 'post_type',
-									],
-								],
-							],
-							[
-								'type'              => 'select',
-								'key'               => $this->field_key . '_dynamic_card_tax',
-								'label'             => __( 'Categories', 'hogan-grid' ),
-								'name'              => 'card_content_categories',
-								'instructions'      => __( 'Select categories to build cards from', 'hogan-grid' ),
-								'required'          => 1,
-								'wrapper'           => [
-									'width' => '50',
-								],
-								'allow_null'        => 0,
-								'multiple'          => 1,
-								'ui'                => 1,
-								'ajax'              => 0,
-								'return_format'     => 'value',
-								'conditional_logic' => [
-									[
-										'field'    => $this->field_key . '_dynamic_card_type',
-										'operator' => '==',
-										'value'    => 'taxonomy',
-									],
-								],
-							],
-						],
+						'sub_fields' => $this->get_dynamic_sub_fields(),
 					],
 				],
 			];
+
+			return $fields;
+		}
+
+		/**
+		 * Dynamic sub fields
+		 */
+		private function get_dynamic_sub_fields() {
+			$fields = [
+				$this->card_style_field( $this->field_key . '_dynamic_card_style', 50 ),
+				[
+					'type'          => 'number',
+					'key'           => $this->field_key . '_number_of_items',
+					'label'         => __( 'Number of items', 'hogan-grid' ),
+					'name'          => 'number_of_items',
+					'instructions'  => __( 'Set the number of items to display', 'hogan-grid' ),
+					'required'      => 1,
+					'default_value' => 3,
+					'min'           => 1,
+					'max'           => 10,
+					'step'          => 1,
+					'wrapper'       => [
+						'width' => '50',
+					],
+				],
+			];
+
+			if ( ! empty( $this->taxonomies ) ) {
+				$fields[] = [
+					'type'          => 'button_group',
+					'key'           => $this->field_key . '_dynamic_card_type',
+					'label'         => __( 'Content Type', 'hogan-grid' ),
+					'name'          => 'content_type',
+					'instructions'  => __( 'Select how to fetch posts', 'hogan-grid' ),
+					'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
+						'post_type' => __( 'Post type', 'hogan-grid' ),
+						'taxonomy'  => __( 'Category', 'hogan-grid' ),
+					], $this ),
+					'wrapper'       => [
+						'width' => '50',
+					],
+					'allow_null'    => 0,
+					'default_value' => 'automatic',
+					'layout'        => 'horizontal',
+					'return_format' => 'value',
+				];
+			}
+
+			$post_types_field = [
+				'type'          => 'select',
+				'key'           => $this->field_key . '_dynamic_card_content_type',
+				'label'         => __( 'Post types', 'hogan-grid' ),
+				'name'          => 'card_content_type',
+				'instructions'  => __( 'Select post types to build cards from', 'hogan-grid' ),
+				'required'      => 1,
+				'wrapper'       => [
+					'width' => '100',
+				],
+				'choices'       => apply_filters( 'hogan/module/grid/dynamic_content_post_types', [
+					'post' => __( 'Posts', 'hogan-grid' ),
+					'page' => __( 'Pages', 'hogan-grid' ),
+				], $this ),
+				'allow_null'    => 0,
+				'multiple'      => 1,
+				'ui'            => 1,
+				'ajax'          => 0,
+				'return_format' => 'value',
+			];
+
+			if ( ! empty( $this->taxonomies ) ) {
+				$post_types_field['wrapper']['width']  = '50';
+				$post_types_field['conditional_logic'] = [
+					[
+						'field'    => $this->field_key . '_dynamic_card_type',
+						'operator' => '==',
+						'value'    => 'post_type',
+					],
+				];
+			}
+
+			$fields[] = $post_types_field;
+
+			if ( ! empty( $this->taxonomies ) ) {
+				$fields[] = [
+					'type'              => 'select',
+					'key'               => $this->field_key . '_dynamic_card_tax',
+					'label'             => __( 'Categories', 'hogan-grid' ),
+					'name'              => 'card_content_categories',
+					'instructions'      => __( 'Select categories to build cards from', 'hogan-grid' ),
+					'required'          => 1,
+					'wrapper'           => [
+						'width' => '50',
+					],
+					'allow_null'        => 0,
+					'multiple'          => 1,
+					'ui'                => 1,
+					'ajax'              => 0,
+					'return_format'     => 'value',
+					'conditional_logic' => [
+						[
+							'field'    => $this->field_key . '_dynamic_card_type',
+							'operator' => '==',
+							'value'    => 'taxonomy',
+						],
+					],
+				];
+			}
 
 			return $fields;
 		}
