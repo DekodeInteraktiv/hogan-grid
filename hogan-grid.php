@@ -45,4 +45,6 @@ function hogan_grid_load_textdomain() {
 function hogan_grid_register_module( \Dekode\Hogan\Core $core ) {
 	require_once 'class-grid.php';
 	$core->register_module( new \Dekode\Hogan\Grid() );
+
+	require_once 'block/index.php';
 }
