@@ -16,6 +16,10 @@ const BlockControls = wp.editor.BlockControls;
 const AlignmentToolbar = wp.editor.BlockAlignmentToolbar;
 const UrlInput = wp.editor.UrlInput;
 
+const TextControl = wp.editor.TextControl;
+
+import Card from './card.js';
+
 /**
 * Register Basic Block.
 *
@@ -39,6 +43,18 @@ registerBlockType( 'hogan-grid/cards', { // Block name. Block names must be stri
 		size: {
 			type: 'string',
 		},
+		post: {
+			type: 'integer',
+		},
+		search: {
+			type: 'string',
+		},
+		postList: {
+			type: 'array',
+		},
+		output: {
+			type: 'string',
+		},
 	},
 	getEditWrapperProps( attributes ) {
 		if ( attributes.alignment === 'left' || attributes.alignment === 'right' ) {
@@ -47,15 +63,25 @@ registerBlockType( 'hogan-grid/cards', { // Block name. Block names must be stri
 	},
 	// The "edit" property must be a valid function.
 	edit: function( props ) {
+		const size = (props.attributes.size ? props.attributes.size : 'small');
+		const post = props.attributes.post;
 		const alignment = props.attributes.alignment;
+		const search = props.attributes.search;
+		const postList = props.attributes.postList;
 
-		fetch( '/wp-json/wp/v2/posts/7', {
+		function getPost( postID, sizeString ) {
+			sizeString = (sizeString ? sizeString : size);
+			fetch( '/wp-json/hogan/grid/get?post=' + postID + '&size=' + sizeString, {
 				method: 'GET'
 			} )
 			.then(res => res.json())
 			.then(response =>  {
 				console.log(response);
+				props.setAttributes( {
+					output: response.data
+				} );
 			});
+		}
 
 		function onChangeAlignment( newAlignment ) {
 			props.setAttributes( { alignment: newAlignment } );
@@ -73,6 +99,34 @@ registerBlockType( 'hogan-grid/cards', { // Block name. Block names must be stri
 
 			}
 			props.setAttributes( { size: size } );
+			getPost( post, size );
+		}
+
+		function onSearchPost( newPost ) {
+			const value = newPost.target.value;
+			fetch( '/wp-json/wp/v2/posts?search=' + value, {
+					method: 'GET'
+				} )
+				.then(res => res.json())
+				.then(response =>  {
+					if( value ) {
+						props.setAttributes( { postList: response } );
+					} else {
+						props.setAttributes( { postList: false } );
+					}
+				});
+			props.setAttributes( { search: newPost.target.value } );
+		}
+
+		function onChangePost( newPost ) {
+			const search = newPost.target.dataset.title;
+			const post = parseInt( newPost.target.dataset.post, 10 );
+			props.setAttributes( {
+				search: search,
+				postList: false,
+				post: post,
+			} );
+			getPost( post );
 		}
 
 		return [
@@ -86,53 +140,27 @@ registerBlockType( 'hogan-grid/cards', { // Block name. Block names must be stri
 						onChange: onChangeAlignment
 					}
 				),
+				el(
+					'input',
+					{
+						value: search,
+						onChange: onSearchPost
+					}
+				),
+				<div style={{position:'absolute', right: '0', width: '193px', background: '#fff', top: '100%', border: '1px solid #ddd'}}>
+				{postList && postList.map((post, index) =>
+					<a data-post={post.id} data-title={post.title.rendered} style={{cursor: 'pointer', display:'block', borderBottom: '1px solid #ddd', fontSize: '14px', padding: '2px 4px'}} onClick={onChangePost}>{post.title.rendered}</a>
+				)}
+				</div>
 			),
-			<div className={ "hogan-grid hogan-grid-block" }>
-			<div className={ "hogan-grid-item hogan-grid-item-size-" + props.attributes.size + " hogan-grid-item-type-post savage-has-image savage-has-label savage-has-heading savage-has-excerpt savage-has-teaser" }>
-			<div className="hogan-grid-item-inner">
-			<div className="savage-card-image">
-			<div className="savage-card-image-inner">
-			<span className="savage-card-image-image" style={{backgroundImage:'url(' + 'http://teft.local/wp-content/uploads/2018/06/hyper_beast-wallpaper-3440x1440-768x321.jpg' + ')'}}></span>	</div>
-			</div>
-			<div className="savage-card-body">
-			<div className="savage-card-body-inner">
-			<div className="savage-card-label-holder">
-			<p className="savage-card-label">Post</p>
-			</div>
-			<h2 className="savage-card-heading">This is a card</h2>
-			<p className="savage-card-excerpt">Look at this card, this card is amazing</p>
-			<p className="savage-card-teaser">Read more about cards</p>
-			</div>
-			</div>
-			<a className="savage-card-link"><span className="screen-reader-text">Read article "Test2"</span></a></div>
-			</div>
-			</div>
+			<Card noLink={true} html={props.attributes.output} />
 		];
 	},
 
 	// The "save" property must be specified and must be a valid function.
 	save: function( props ) {
 		return (
-			<div className={ "align-" + props.attributes.alignment + " hogan-grid hogan-grid-block" }>
-			<div className="hogan-grid-item hogan-grid-item-size-small hogan-grid-item-type-post savage-has-image savage-has-label savage-has-heading savage-has-excerpt savage-has-teaser">
-			<div className="hogan-grid-item-inner">
-			<div className="savage-card-image">
-			<div className="savage-card-image-inner">
-			<span className="savage-card-image-image" style={{backgroundImage:'url(' + 'http://teft.local/wp-content/uploads/2018/06/hyper_beast-wallpaper-3440x1440-768x321.jpg' + ')'}}></span>	</div>
-			</div>
-			<div className="savage-card-body">
-			<div className="savage-card-body-inner">
-			<div className="savage-card-label-holder">
-			<p className="savage-card-label">Post</p>
-			</div>
-			<h2 className="savage-card-heading">This is a card</h2>
-			<p className="savage-card-excerpt">Look at this card, this card is amazing</p>
-			<p className="savage-card-teaser">Read more about cards</p>
-			</div>
-			</div>
-			<a className="savage-card-link"><span className="screen-reader-text">Read article "Test2"</span></a></div>
-			</div>
-			</div>
+			<div className={"hogan-grid-align-" + props.attributes.alignment}><Card html={props.attributes.output} /></div>
 		);
 	},
 } );

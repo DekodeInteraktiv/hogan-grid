@@ -603,29 +603,37 @@
 	}
 }
 
+.hogan-grid-block .hogan-grid-item {
+	background: #f7f7f7;
+	width: 100%;
+}
+
+.hogan-grid-block .hogan-grid-item-size-small {
+	max-width: 300px;
+}
+
 .hogan-grid-block {
 	margin: 0;
 }
 
-.hogan-grid-block .hogan-grid-item {
-	background: #f7f7f7;
-	margin: 0 0 0 30px;
+.hogan-grid-block .hogan-module {
+	padding: 0;
+}
+
+.hogan-grid-align-left {
+	float: left;
+	margin: 0 30px 0 -100px;
 	max-width: 300px;
 	width: 100%;
 }
 
-.hogan-grid-block.align-left {
-	float: left;
+.hogan-grid-block .hogan-grid-item {
+	margin: 0 auto;
 }
 
-.hogan-grid-block.align-left .hogan-grid-item {
-	margin: 0 30px 0 0;
-}
-
-.hogan-grid-block.align-right {
+.hogan-grid-align-right {
 	float: right;
-}
-
-.hogan-grid-block.align-right .hogan-grid-item {
-	margin: 0 0 0 30px;
+	margin: 0 -100px 0 30px;
+	max-width: 300px;
+	width: 100%;
 }

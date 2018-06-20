@@ -47,4 +47,5 @@ function hogan_grid_register_module( \Dekode\Hogan\Core $core ) {
 	$core->register_module( new \Dekode\Hogan\Grid() );
 
 	require_once 'block/index.php';
+	require_once 'block/rest-block.php';
 }
