@@ -13,7 +13,7 @@ class Card extends Component {
 
 	render() {
 		let output = this.props.html;
-		if( this.props.noLink) {
+		if( output && this.props.noLink) {
 			output = output.replace("href", "data-href");
 		}
 		return (

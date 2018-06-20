@@ -623,7 +623,7 @@
 .hogan-grid-align-left {
 	float: left;
 	margin: 0 30px 0 -100px;
-	max-width: 300px;
+	max-width: 330px;
 	width: 100%;
 }
 
@@ -634,6 +634,6 @@
 .hogan-grid-align-right {
 	float: right;
 	margin: 0 -100px 0 30px;
-	max-width: 300px;
+	max-width: 330px;
 	width: 100%;
 }
