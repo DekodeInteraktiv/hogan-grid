@@ -274,27 +274,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 				],
 			];
 
-			if ( ! empty( $this->taxonomies ) ) {
-				$fields[] = [
-					'type'          => 'button_group',
-					'key'           => $this->field_key . '_dynamic_card_type',
-					'label'         => __( 'Content Type', 'hogan-grid' ),
-					'name'          => 'content_type',
-					'instructions'  => __( 'Select how to fetch posts', 'hogan-grid' ),
-					'choices'       => apply_filters( 'hogan/module/grid/card_sizes', [
-						'post_type' => __( 'Post type', 'hogan-grid' ),
-						'taxonomy'  => __( 'Category', 'hogan-grid' ),
-					], $this ),
-					'wrapper'       => [
-						'width' => '50',
-					],
-					'allow_null'    => 0,
-					'default_value' => 'automatic',
-					'layout'        => 'horizontal',
-					'return_format' => 'value',
-				];
-			}
-
 			$post_types_field = [
 				'type'          => 'select',
 				'key'           => $this->field_key . '_dynamic_card_content_type',
@@ -318,13 +297,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			if ( ! empty( $this->taxonomies ) ) {
 				$post_types_field['wrapper']['width']  = '50';
-				$post_types_field['conditional_logic'] = [
-					[
-						'field'    => $this->field_key . '_dynamic_card_type',
-						'operator' => '==',
-						'value'    => 'post_type',
-					],
-				];
 			}
 
 			$fields[] = $post_types_field;
@@ -336,22 +308,15 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 					'label'             => __( 'Categories', 'hogan-grid' ),
 					'name'              => 'card_content_categories',
 					'instructions'      => __( 'Select categories to build cards from', 'hogan-grid' ),
-					'required'          => 1,
+					'required'          => 0,
 					'wrapper'           => [
 						'width' => '50',
 					],
-					'allow_null'        => 0,
+					'allow_null'        => 1,
 					'multiple'          => 1,
 					'ui'                => 1,
 					'ajax'              => 0,
 					'return_format'     => 'value',
-					'conditional_logic' => [
-						[
-							'field'    => $this->field_key . '_dynamic_card_type',
-							'operator' => '==',
-							'value'    => 'taxonomy',
-						],
-					],
 				];
 			}
 
@@ -535,10 +500,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						break;
 
 					case 'dynamic_content':
-						// Backwards comp.
-						if ( ! isset( $group['content_type'] ) ) {
-							$group['content_type'] = 'post_type';
-						}
 
 						$cards_query_args = [
 							'fields'         => 'ids',
@@ -548,8 +509,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 							'post__not_in'   => wp_parse_id_list( $this->fetched_posts ),
 						];
 
-						if ( 'taxonomy' === $group['content_type'] ) {
-							$cards_query_args['post_type'] = 'any';
+						if ( ! empty( $group['card_content_categories'] ) ) {
 							$cards_query_args['tax_query'] = [ // phpcs:ignore
 								'relation' => 'OR',
 							];
