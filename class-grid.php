@@ -303,13 +303,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 
 			if ( ! empty( $this->taxonomies ) ) {
 				$fields[] = [
-					'type'         => 'select',
-					'key'          => $this->field_key . '_dynamic_card_tax',
-					'label'        => __( 'Categories', 'hogan-grid' ),
-					'name'         => 'card_content_categories',
-					'instructions' => __( 'Select categories to build cards from', 'hogan-grid' ),
-					'required'     => 0,
-					'wrapper'      => [
+					'type'          => 'select',
+					'key'           => $this->field_key . '_dynamic_card_tax',
+					'label'         => __( 'Categories', 'hogan-grid' ),
+					'name'          => 'card_content_categories',
+					'instructions'  => __( 'Select categories to build cards from', 'hogan-grid' ),
+					'required'      => 0,
+					'wrapper'       => [
 						'width' => '50',
 					],
 					'allow_null'    => 1,
@@ -500,7 +500,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 						break;
 
 					case 'dynamic_content':
-
 						$cards_query_args = [
 							'fields'         => 'ids',
 							'post_type'      => $group['card_content_type'],
