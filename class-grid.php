@@ -296,27 +296,27 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 			];
 
 			if ( ! empty( $this->taxonomies ) ) {
-				$post_types_field['wrapper']['width']  = '50';
+				$post_types_field['wrapper']['width'] = '50';
 			}
 
 			$fields[] = $post_types_field;
 
 			if ( ! empty( $this->taxonomies ) ) {
 				$fields[] = [
-					'type'              => 'select',
-					'key'               => $this->field_key . '_dynamic_card_tax',
-					'label'             => __( 'Categories', 'hogan-grid' ),
-					'name'              => 'card_content_categories',
-					'instructions'      => __( 'Select categories to build cards from', 'hogan-grid' ),
-					'required'          => 0,
-					'wrapper'           => [
+					'type'         => 'select',
+					'key'          => $this->field_key . '_dynamic_card_tax',
+					'label'        => __( 'Categories', 'hogan-grid' ),
+					'name'         => 'card_content_categories',
+					'instructions' => __( 'Select categories to build cards from', 'hogan-grid' ),
+					'required'     => 0,
+					'wrapper'      => [
 						'width' => '50',
 					],
-					'allow_null'        => 1,
-					'multiple'          => 1,
-					'ui'                => 1,
-					'ajax'              => 0,
-					'return_format'     => 'value',
+					'allow_null'    => 1,
+					'multiple'      => 1,
+					'ui'            => 1,
+					'ajax'          => 0,
+					'return_format' => 'value',
 				];
 			}
 
