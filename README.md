@@ -45,6 +45,13 @@ Dynamic content show card with content that is dynamically queried. Ex. showing 
 	'page' => __( 'Pages', 'hogan-grid' )
 ]
 ```
+- `hogan/module/grid/dynamic_content_taxonomies` - add taxonomies to use in dynamic selection. Ex. use:
+```
+function enable_dynamic_taxonomies() : array {
+	return [ 'category', 'my_custom_taxonomy' ];
+}
+add_filter( 'hogan/module/grid/dynamic_content_taxonomies', __NAMESPACE__ . '\\enable_dynamic_taxonomies' );
+```
 
 - `hogan/module/grid/card_sizes` - card sizes to use in module
 ```

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Grid\n"
-"POT-Creation-Date: 2018-04-05 20:55+0200\n"
-"PO-Revision-Date: 2018-04-05 20:56+0200\n"
+"POT-Creation-Date: 2018-09-11 09:36+0200\n"
+"PO-Revision-Date: 2018-09-11 09:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -21,79 +21,103 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-grid.php:57
+#: class-grid.php:71
 msgid "Card grid"
 msgstr "Kort"
 
-#: class-grid.php:106
+#: class-grid.php:146
 msgid "Theme"
 msgstr "Tema"
 
-#: class-grid.php:133
+#: class-grid.php:171
+msgid "Grid size"
+msgstr "Rutenett"
+
+#: class-grid.php:183
+msgid "Small"
+msgstr "Liten"
+
+#: class-grid.php:184
+msgid "Dynamic"
+msgstr "Dynamiske kort"
+
+#: class-grid.php:185
+msgid "Large"
+msgstr "Stor"
+
+#: class-grid.php:202
 msgid "Add cards"
 msgstr "Legg til kort"
 
-#: class-grid.php:141
+#: class-grid.php:210
 msgid "Static content"
 msgstr "Faste kort"
 
-#: class-grid.php:147 class-grid.php:196
-msgid "Card Style"
-msgstr "Kortstørrelse"
-
-#: class-grid.php:149 class-grid.php:198
-msgid "Choose card type for this group"
-msgstr "Bestem størrelsen på kort i denne gruppen"
-
-#: class-grid.php:151 class-grid.php:200
-msgid "Single"
-msgstr "Standard"
-
-#: class-grid.php:152 class-grid.php:201
-msgid "Double"
-msgstr "Medium"
-
-#: class-grid.php:153 class-grid.php:202
-msgid "Full"
-msgstr "Stor"
-
-#: class-grid.php:163
+#: class-grid.php:217
 msgid "Pick items from list"
 msgstr "Velg kort fra listen"
 
-#: class-grid.php:166
+#: class-grid.php:220
 msgid "Select items to by clicking the items on the left side"
 msgstr ""
 "Legg til kort ved å klikke i listen til venstre. Fjern kort ved å klikke i "
 "listen til høyre"
 
-#: class-grid.php:190
+#: class-grid.php:244
 msgid "Dynamic content"
 msgstr "Dynamiske kort"
 
-#: class-grid.php:212
-msgid "Content Type"
-msgstr "Innholdstype"
-
-#: class-grid.php:214
-msgid "Select content types to build cards from"
-msgstr "Velg innholdstyper for dynamiske kort"
-
-#: class-grid.php:220
-msgid "Posts"
-msgstr "Innlegg"
-
-#: class-grid.php:221
-msgid "Pages"
-msgstr "Sider"
-
-#: class-grid.php:232
+#: class-grid.php:263
 msgid "Number of items"
 msgstr "Antall kort"
 
-#: class-grid.php:234
+#: class-grid.php:265
 msgid "Set the number of items to display"
 msgstr "Bestem antall kort som skal vises"
+
+#: class-grid.php:280
+msgid "Post types"
+msgstr "Innholdstyper"
+
+#: class-grid.php:282
+msgid "Select post types to build cards from"
+msgstr "Velg innholdstyper for dynamiske kort"
+
+#: class-grid.php:288
+msgid "Posts"
+msgstr "Innlegg"
+
+#: class-grid.php:289
+msgid "Pages"
+msgstr "Sider"
+
+#: class-grid.php:308
+msgid "Categories"
+msgstr "Kategorier"
+
+#: class-grid.php:310
+msgid "Select categories to build cards from"
+msgstr "Velg kategorier for dynamiske kort"
+
+#: class-grid.php:337
+msgid "Card Style"
+msgstr "Kortstørrelse"
+
+#: class-grid.php:339
+msgid "Choose card type for this group"
+msgstr "Bestem størrelsen på kort i denne gruppen"
+
+#: class-grid.php:341
+msgid "Single"
+msgstr "Standard"
+
+#: class-grid.php:342
+msgid "Double"
+msgstr "Medium"
+
+#: class-grid.php:343
+msgid "Full"
+msgstr "Stor"
 
 #. Plugin Name of the plugin/theme
 msgid "Hogan Module: Grid"
@@ -101,7 +125,7 @@ msgstr "Hogan-modul: Kortutlisting"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/dekodeinteraktiv/hogan-grid"
-msgstr ""
+msgstr "https://github.com/dekodeinteraktiv/hogan-grid"
 
 #. Description of the plugin/theme
 msgid "Card Grid Module for Hogan"
@@ -109,8 +133,20 @@ msgstr "Kortmodul for Hogan"
 
 #. Author of the plugin/theme
 msgid "Dekode"
-msgstr ""
+msgstr "Dekode"
 
 #. Author URI of the plugin/theme
 msgid "https://dekode.no"
-msgstr ""
+msgstr "https://dekode.no"
+
+#~ msgid "Content Type"
+#~ msgstr "Innholdstype"
+
+#~ msgid "Select how to fetch posts"
+#~ msgstr "Velg hvor kort skal hentes fra"
+
+#~ msgid "Post type"
+#~ msgstr "Innholdsseksjon"
+
+#~ msgid "Category"
+#~ msgstr "Kategori"
