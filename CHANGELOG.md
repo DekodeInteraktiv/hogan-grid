@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3
+- Add hook for including taxonomies in dynamic card selection. 
+[#56](https://github.com/DekodeInteraktiv/hogan-grid/pull/56)
+
 ## 1.2.1
 - Move relative css rule position on the body-inner to label wrapper. Fixes a meta card info position that broke in 1.2.0. [#55](https://github.com/DekodeInteraktiv/hogan-grid/pull/55)
 
