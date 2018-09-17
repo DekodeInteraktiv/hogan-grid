@@ -1,7 +1,10 @@
 # Changelog
 
+## 1.3.1
+- Add filters for grid and item class names. [#61](https://github.com/DekodeInteraktiv/hogan-grid/pull/61)
+
 ## 1.3
-- Add hook for including taxonomies in dynamic card selection. 
+- Add hook for including taxonomies in dynamic card selection.
 [#56](https://github.com/DekodeInteraktiv/hogan-grid/pull/56)
 
 ## 1.2.1
