@@ -264,6 +264,10 @@
 	}
 
 	.hogan-grid .hogan-grid-item-size-large .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid .hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 60px;
 	}
 
@@ -335,6 +339,10 @@
 	}
 
 	.hogan-grid-item-size-medium .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body-inner {
 		padding: 0 40px;
 	}
 
@@ -398,6 +406,10 @@
 	}
 
 	.hogan-grid .hogan-grid-item-size-large .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid .hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 80px;
 	}
 
@@ -450,6 +462,10 @@
 	}
 
 	.hogan-grid .hogan-grid-item-size-large .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid .hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 120px;
 	}
 
@@ -487,6 +503,11 @@
 
 	.hogan-grid-item-size-medium .savage-card-body,
 	.hogan-grid-item-size-large .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid-item-size-medium .savage-card-body-inner,
+	.hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 60px;
 	}
 
@@ -565,12 +586,18 @@
 		}
 	}
 
-	.hogan-grid .hogan-grid-item-size-large .savage-card-body {
+	.hogan-grid .hogan-grid-item-size-large .savage-card-body,
+	.hogan-grid-item-size-medium .savage-card-body,
+	.hogan-grid-item-size-large .savage-card-body {
+		padding: 0;
+	}
+
+	.hogan-grid .hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 130px;
 	}
 
-	.hogan-grid-item-size-medium .savage-card-body,
-	.hogan-grid-item-size-large .savage-card-body {
+	.hogan-grid-item-size-medium .savage-card-body-inner,
+	.hogan-grid-item-size-large .savage-card-body-inner {
 		padding: 0 65px;
 	}
 
