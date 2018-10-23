@@ -2,7 +2,7 @@
 
 ## 1.4.0
 ### Breaking Change
-- Moved padding on large and medium sized cards from `.savage-card-body` to `.savage-card-body-inner`. This solves an issue in IE where the text got outside of the grid.
+- Moved padding on large and medium sized cards from `.savage-card-body` to `.savage-card-body-inner`. This solves an issue in IE where the text got outside of the grid. [#63](https://github.com/DekodeInteraktiv/hogan-grid/pull/63)
 
 ## 1.3.1
 - Add filters for grid and item class names. [#61](https://github.com/DekodeInteraktiv/hogan-grid/pull/61)
