@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.1
+- Add better print css
+
 ## 1.4.0
 ### Breaking Change
 - Moved padding on large and medium sized cards from `.savage-card-body` to `.savage-card-body-inner`. This solves an issue in IE where the text got outside of the grid. [#63](https://github.com/DekodeInteraktiv/hogan-grid/pull/63)
