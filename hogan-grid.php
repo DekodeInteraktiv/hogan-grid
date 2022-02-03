@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-grid
  * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-grid
  * Description: Card Grid Module for Hogan
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0-or-later
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HOGAN_GRID_VERSION', '1.4.1' );
+define( 'HOGAN_GRID_VERSION', '1.4.2' );
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_grid_load_textdomain' );
 add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_grid_register_module', 10, 1 );

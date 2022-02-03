@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.2
+- Add filter for dynamic content limit
+
 ## 1.4.1
 - Add better print css
 
