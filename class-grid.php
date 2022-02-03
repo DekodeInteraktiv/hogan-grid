@@ -266,7 +266,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Grid' ) && class_exists( '\\Dekode\\Hogan
 					'required'      => 1,
 					'default_value' => 3,
 					'min'           => 1,
-					'max'           => 10,
+					'max'           => apply_filters( 'hogan/module/grid/dynamic_content_limit', 10 ),
 					'step'          => 1,
 					'wrapper'       => [
 						'width' => '50',
